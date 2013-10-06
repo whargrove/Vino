@@ -35,6 +35,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Use RedCloth for converting posts into HTML
+gem 'RedCloth'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
