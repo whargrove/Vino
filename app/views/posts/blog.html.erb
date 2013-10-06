@@ -1,4 +1,7 @@
 <% @posts.each do |p| %>
-	<h1><%= p.title %></h1>
-	<p><%= p.content %></p>
+	<article>
+		<h1><%= p.title %></h1>
+		<% # Use RedCloth to display p.content as HTML after sanitizing %>
+		<%= sanitize RedCloth.new(p.content).to_html %>
+	</article>
 <% end %>
