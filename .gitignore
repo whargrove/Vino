@@ -4,10 +4,9 @@
 # Ignore bundler install path
 /vendor/bundle
 
-# Ignore the default SQLite database
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles
 /log/*.log
 /tmp
+
+# Ignore database.yml for security
+/config/database.yml
