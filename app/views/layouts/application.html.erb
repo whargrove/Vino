@@ -13,7 +13,7 @@
 			<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
 	<% else %>
 		<header class="container">
-			<%= link_to 'Log in', login_path %></p>
+			<p class="text-right"><%= link_to 'Log in', login_path %></p>
 	<% end %>
 			<h1 class="text-left"><%= link_to 'WesHargrove.com', root_path %></h1>
 		</header>
