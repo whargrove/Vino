@@ -5,6 +5,7 @@
 	  <thead>
 	    <tr>
 	      <th>Title</th>
+	      <th>Link</th>
 	      <th>Author</th>
 	      <th>Published date</th>
 	      <th>Actions</th>
@@ -15,6 +16,11 @@
 	    <% @posts.each do |post| %>
 	      <tr>
 	        <td><%= link_to post.title, post %></td>
+	        <% if post.link %>
+		        <td><span class="glyphicon glyphicon-link"></span></td>
+	        <% else %>
+	        	<td>&nbsp;</td>
+	        <% end %>
 	        <td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
 	        <td><%= post.created_at.localtime %></td>
 	        <td><%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-default btn-sm' %>
