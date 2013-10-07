@@ -13,17 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20131006232629) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "posts", force: true do |t|
-    t.string   "title"
-    t.string   "content"
+    t.text     "title"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "link",       default: false, null: false
-    t.string   "link_url"
+    t.text     "link_url"
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "user_name"
