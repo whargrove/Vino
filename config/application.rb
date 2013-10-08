@@ -1,11 +1,14 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'dotenv'; Dotenv.load ".env"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+
+CONFIG = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
+CONFIG.merge! CONFIG.fetch(Rails.env, {})
+CONFIG.symbolize_keys!
 
 module Vino
   class Application < Rails::Application
