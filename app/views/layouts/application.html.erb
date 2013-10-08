@@ -7,20 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div>
 	<% if current_user %>
-		Logged in as <%= current_user.first_name %>.
-		<%= link_to 'Log out', logout_path, method: :delete %>
+		<header class="container">
+			<p class="text-right">Logged in as <%= current_user.first_name %>.
+			<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
 	<% else %>
-		<%= link_to 'Sign up', signup_path %> or
-		<%= link_to 'Log in', login_path %>
+		<header class="container">
+			<p class="text-right"><%= link_to 'Log in', login_path %></p>
 	<% end %>
-	</div>
-	<div class="container">
+			<h1 class="text-left"><%= link_to 'WesHargrove.com', root_path %></h1>
+		</header>
 
+	<div class="container">
 		<%= yield %>
-		
 	</div>
+
+	<footer>
+		<p class="text-center text-muted"><small>Powered by <%= link_to 'Vino', 'https://github.com/whargrove/Vino' %>. Hosted on <%= link_to 'Digital Ocean', 'https://www.digitalocean.com/?refcode=f391b77be531' %>.</small></p>
+	</footer>
 
 </body>
 </html>
