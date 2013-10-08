@@ -13,3 +13,6 @@
 
 # Ignore application.yml for protecting secrets
 /config/application.yml
+
+# Ignore public/assets
+/public/assets/
