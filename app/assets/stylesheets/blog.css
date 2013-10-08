@@ -1,8 +1,20 @@
 header {
-	margin-top: 1%;
+	margin-top: 10px;
 }
 
 footer p {
-	padding-top: 1%;
-	margin-bottom: 1%;
+	padding-top: 10px;
+	margin-bottom: 5px;
+}
+
+/* Custom CSS classes */
+
+.glass-separator {
+	color: #F5F5F5;
+	font-size: 24px;
+}
+
+.separator {
+	width: 50px;
+	margin: 20px auto;
 }
