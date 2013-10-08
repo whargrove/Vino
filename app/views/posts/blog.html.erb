@@ -1,9 +1,9 @@
 <% @posts.each do |p| %>
 	<article>
 		<% if p.link %>
-			<h1><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h1>
+			<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
 		<% else %>
-			<h1><%= p.title %></h1>
+			<h2><%= p.title %></h2>
 		<% end %>
 		<% # Use RedCloth to display p.content as HTML after sanitizing %>
 		<%= sanitize RedCloth.new(p.content).to_html %>
