@@ -44,5 +44,8 @@ gem 'unicorn'
 # Use Capistrano for deployment
 gem 'capistrano', group: :development
 
+# Use Dotenv for managing the application's environment
+gem 'dotenv-rails'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]

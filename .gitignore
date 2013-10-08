@@ -10,6 +10,3 @@
 
 # Ignore database.yml for security
 /config/database.yml
-
-# Ignore secret_token.rb for security
-/config/initializers/secret_token.rb
