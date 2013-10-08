@@ -1,5 +1,7 @@
-<h1>New post</h1>
+<div class="well well-sm">Post content is converted to HTML using RedCloth. For more information about using Textile syntax, go to the <%= link_to 'Textile Reference Manual for RedCloth 4', 'http://redcloth.org/textile/' %></div>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', posts_path %>
+<div class="form-group">
+	<%= link_to 'Back', posts_path, :class => 'btn btn-default' %>
+</div>
