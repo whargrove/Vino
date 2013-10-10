@@ -22,7 +22,7 @@
 	        	<td>&nbsp;</td>
 	        <% end %>
 	        <td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
-	        <td><%= post.created_at.localtime %></td>
+	        <td><%= post.created_at.in_time_zone %></td>
 	        <td><%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-default btn-sm' %>
 							<%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %></td>
 	      </tr>
