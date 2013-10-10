@@ -5,12 +5,14 @@ class PostsController < ApplicationController
   # GET /
   def blog
     @posts = Post.order('created_at DESC').limit(5)
+    Time.zone = 'Pacific Time (US & Canada)'
   end
   
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.order('created_at DESC')
+    Time.zone = 'Pacific Time (US & Canada)'
   end
 
   # GET /posts/1
