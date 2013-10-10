@@ -8,6 +8,10 @@
 /log/*.log
 /tmp
 
+# Ignore db/*.sqlite3
+# Comment the following line if you are in development and want to use sqlite
+/db/*.sqlite3
+
 # Ignore database.yml for security
 /config/database.yml
 
