@@ -9,16 +9,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if current_user %>
-		<header class="container">
-			<p class="text-right">Logged in as <%= current_user.first_name %>.
-			<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
-	<% else %>
-		<header class="container">
-			<p class="text-right"><%= link_to 'Log in', login_path %></p>
-	<% end %>
-			<h1 class="text-left"><%= link_to 'WesHargrove.com', root_path %></h1>
-		</header>
+  <header class="container">
+  	<% if current_user %>
+  		<p class="text-right">Logged in as <%= current_user.first_name %>.
+  		<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
+    <% end %>
+  	<h1 class="text-left"><%= link_to 'WesHargrove.com', root_path %></h1>
+  </header>
+
 
 	<div class="container">
 		<%= yield %>

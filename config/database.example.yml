@@ -1,0 +1,26 @@
+# Uncomment the following lines to use PostgreSQL for a development environment
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: blog_development
+#   pool: 5
+#   username: 
+#   password: 
+
+# Uncomment the following lines to use PostgreSQL for a test environment
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: blog_test
+#   pool: 5
+#   username: 
+#   password: 
+
+# Uncomment the following lines to use PostgreSQL for a production environment
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: blog_development
+#   pool: 5
+#   username: 
+#   password: 
