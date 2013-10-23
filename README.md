@@ -24,7 +24,7 @@ Change directory to the cloned repository
 
 #### Setup the application variables
 
-Create a usable application.yml. (You could `mv` if you don't want to keep the example around. config/application.yml is ignored for deployment purposes.)
+First, create a usable application.yml. (You could `mv` if you don't want to keep the example around. config/application.yml is ignored for deployment purposes.)
 
 `cp config/application.example.yml config/application.yml`
 
@@ -92,9 +92,19 @@ Migrate the database
 
 `rake db:migrate RAILS_ENV=development`
 
-#### All done
+#### Create a user
 
-Go to http://vino.dev/ and have at it.
+Go to http://vino.dev/signup in your browser.
+
+(Note: In a production environment, your IP address is checked when going to /signup. I recommend adding your IP address as to `application.yml` so the app knows who is allowed to create a user.)
+
+Enter your user name, first name, last name, and password to sign up.
+
+After pressing 'Sign up' you will be redirected to /, go to http://vino.dev/login
+
+After entering your user name and password you will be logged in and redirected to http://vino.dev/posts
+
+Have at it!
 
 ## FAQ
 
