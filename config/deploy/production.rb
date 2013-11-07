@@ -3,6 +3,8 @@ require "bundler/capistrano"
 server "192.241.221.23", :web, :app, :db, primary: true
 
 set :application, "blog"
+set :stages, %w(production)
+set :default_stage, "production"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
