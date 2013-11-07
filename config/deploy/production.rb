@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "capistrano/ext/multistage"
 
 server "192.241.221.23", :web, :app, :db, primary: true
 
