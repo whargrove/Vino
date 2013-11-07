@@ -13,4 +13,18 @@ class ApplicationController < ActionController::Base
   def authorize
   	redirect_to login_url, alert: "Not authorized" if current_user.nil?
   end
+  
+  def authorize_registration
+    if Rails.env.production?
+      if request.remote_ip == CONFIG[:ip_address]
+        return true 
+      else
+        redirect_to root_url, alert: "Not authorized"
+      end
+    elsif Rails.env.development?
+      return true
+    else
+      redirect_to root_url, alert: "Not authorized" if Rails.env.production?
+    end
+  end
 end
