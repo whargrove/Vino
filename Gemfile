@@ -42,10 +42,7 @@ gem 'RedCloth'
 gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.0', require: false, group: :development
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano', '~> 2.5.15', require: false, group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
