@@ -45,6 +45,7 @@ gem 'unicorn'
 gem 'capistrano', '~> 3.0', require: false, group: :development
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
