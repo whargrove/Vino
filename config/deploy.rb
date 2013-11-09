@@ -1,6 +1,7 @@
 set :application, 'blog'
 set :repo_url, 'git@github.com:whargrove/Vino.git'
-set :deploy_to, "/home/#{user}/apps/#{application}"
+set :branch, 'master'
+set :deploy_to, "/home/deployer/apps/#{application}"
 set :scm, :git
 set :format, :pretty
 set :log_level, :debug
