@@ -1,20 +1,23 @@
-set :application, 'blog'
-set :repo_url, 'git@github.com:whargrove/Vino.git'
-set :branch, 'master'
-set :deploy_to, "/home/deployer/apps/#{application}"
-set :scm, :git
-set :format, :pretty
-set :log_level, :debug
-set :pty, true
+require "bundler/capistrano"
 
-# set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+server "weshargrove.com", :web, :app, :db, primary: true
 
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-set :keep_releases, 5
+set :application, "blog"
+set :user, "deployer"
+set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+set :scm, "git"
+set :repository, "git@github.com:whargrove/Vino.git"
+set :branch, "master"
+
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
 namespace :deploy do
-
   %w[start stop restart].each do |command|
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
@@ -47,5 +50,4 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
-
 end
