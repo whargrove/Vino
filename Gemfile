@@ -27,11 +27,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -41,8 +36,10 @@ gem 'RedCloth'
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Use Capistrano for deployment
-gem 'capistrano', '~> 2.5.15', require: false, group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Development gems
+group :development do
+	gem 'capistrano', '~> 3.0.1', require: false
+	gem 'capistrano-rails', '~> 1.0.0', require: false
+	gem 'capistrano-rbenv', github: 'capistrano/rbenv', require: false
+	gem 'capistrano-bundler', '~> 1.0.0', require: false
+end
