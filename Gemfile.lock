@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/capistrano/rbenv.git
+  revision: 362dbc02ef963c91425767e09b4848ff7be5132b
+  specs:
+    capistrano-rbenv (0.0.1)
+      capistrano
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,6 +41,8 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 0.0.23)
+    capistrano-bundler (1.0.0)
+      capistrano (>= 3.0.0.pre)
     capistrano-rails (1.0.0)
       capistrano
     coffee-rails (4.0.1)
@@ -130,7 +139,9 @@ DEPENDENCIES
   RedCloth
   bcrypt-ruby (~> 3.0.0)
   capistrano (~> 3.0.1)
+  capistrano-bundler (~> 1.0.0)
   capistrano-rails (~> 1.0.0)
+  capistrano-rbenv!
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails

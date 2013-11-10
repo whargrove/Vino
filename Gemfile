@@ -38,6 +38,8 @@ gem 'unicorn'
 
 # Development gems
 group :development do
-	gem 'capistrano', '~> 3.0.1'
-	gem 'capistrano-rails', '~> 1.0.0'
+	gem 'capistrano', '~> 3.0.1', require: false
+	gem 'capistrano-rails', '~> 1.0.0', require: false
+	gem 'capistrano-rbenv', github: 'capistrano/rbenv', require: false
+	gem 'capistrano-bundler', '~> 1.0.0', require: false
 end

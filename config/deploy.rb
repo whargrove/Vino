@@ -1,10 +1,8 @@
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
-
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
+set :application, 'blog'
+set :repo_url, 'git@github.com:whargrove/Vino.git'
+set :brach, 'master'
+set :deploy_to, "/var/www/#{fetch(:application)}"
+set :scm, :git
 
 # set :format, :pretty
 # set :log_level, :debug
@@ -25,6 +23,8 @@ namespace :deploy do
       # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
+
+  before :deploy, 'deploy:check_revision'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
