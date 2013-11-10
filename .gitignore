@@ -23,3 +23,6 @@
 
 # Ignore public/assets
 /public/assets/
+
+# Ignore `bundle --binstubs`
+/bin/
