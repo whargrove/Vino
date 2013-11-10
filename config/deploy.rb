@@ -15,7 +15,7 @@ set :keep_releases, 5
 
 namespace :deploy do
 
-  before :deploy, 'deploy:check_revision'
+  before :deploy, 'check_revision'
   
   desc 'Restart application'
   task :restart do
