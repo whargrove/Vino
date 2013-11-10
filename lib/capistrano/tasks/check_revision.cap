@@ -6,5 +6,6 @@ task :check_revision do
 			error "Run `git push` from local branch to sync changes"
 			exit
 		end
+		info "Local branch is in sync with remote; proceeding with deploy."
 	end
 end
