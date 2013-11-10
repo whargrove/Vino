@@ -1,9 +1,11 @@
 GIT
-  remote: git://github.com/capistrano/rbenv.git
-  revision: 362dbc02ef963c91425767e09b4848ff7be5132b
+  remote: git://github.com/leehambley/sshkit.git
+  revision: ffbce7622ae57bb960d4a75375f5afb18b9228b7
   specs:
-    capistrano-rbenv (0.0.1)
-      capistrano
+    sshkit (1.0.0)
+      net-scp
+      net-ssh
+      term-ansicolor
 
 GEM
   remote: https://rubygems.org/
@@ -107,10 +109,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sshkit (1.1.0)
-      net-scp
-      net-ssh
-      term-ansicolor
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     thor (0.18.1)
@@ -141,13 +139,13 @@ DEPENDENCIES
   capistrano (~> 3.0.1)
   capistrano-bundler (~> 1.0.0)
   capistrano-rails (~> 1.0.0)
-  capistrano-rbenv!
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
   pg
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
+  sshkit (= 1.0.0)!
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
