@@ -1,6 +1,6 @@
 set :application, 'blog'
 set :repo_url, 'git@github.com:whargrove/Vino.git'
-set :branch, 'cap3'
+set :branch, 'master'
 set :deploy_to, "/var/www/#{fetch(:application)}"
 set :scm, :git
 set :format, :pretty
