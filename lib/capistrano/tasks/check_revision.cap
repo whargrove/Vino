@@ -1,9 +1,9 @@
-desc "Make sure local git is in sync with remote"
+desc "Make sure local branch is in sync with remote"
 task :check_revision do
 	on roles(:web) do
-		unless `git rev-parse HEAD` == `git rev-parse origin/master`
-			error "HEAD is not the same as origin/master"
-			error "Run `git push` from local master to sync changes" 
+		unless `git rev-parse HEAD` == `git rev-parse origin/#{fetch(:branch)}`
+			error "HEAD is not the same as origin/#{fetch(:branch)}"
+			error "Run `git push` from local branch to sync changes"
 			exit
 		end
 	end
