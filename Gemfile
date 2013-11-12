@@ -42,6 +42,6 @@ group :development do
 	gem 'sshkit', '1.0.0', github: 'leehambley/sshkit', require: false
 	gem 'capistrano', '~> 3.0.1', require: false
 	gem 'capistrano-rails', '~> 1.0.0', require: false
-	# gem 'capistrano-rbenv', github: 'capistrano/rbenv', require: false
+	gem 'capistrano-rbenv', github: 'capistrano/rbenv', require: false
 	gem 'capistrano-bundler', '~> 1.0.0', require: false
 end
