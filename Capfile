@@ -5,10 +5,7 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 
 # Include rbenv tasks 
-# require 'capistrano/rbenv'
-
-# set :rbenv_type, :user
-# set :rbenv_ruby, '2.0.0-p247'
+require 'capistrano/rbenv'
 
 # Include bundler tasks
 require 'capistrano/bundler'
