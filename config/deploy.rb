@@ -6,9 +6,9 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :debug
 set :pty, true
-
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :ping_url, "http://weshargrove.com/ping"
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
@@ -20,11 +20,16 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # run "/etc/inid.d/unicorn_#{fetch(:application)} restart"
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
+  desc 'Force restart of passenger after restart'
+  task :ping do
+  	system "curl --silent #{fetch(:ping_url)}"
+  end
+
+  after :finishing, 'deploy:ping'
   after :finishing, 'deploy:cleanup'
 
 end

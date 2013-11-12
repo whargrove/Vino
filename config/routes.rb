@@ -8,4 +8,6 @@ Vino::Application.routes.draw do
 	resources :sessions
   
   root 'posts#blog'
+
+  get 'ping' => proc { |env| [200, {}, ['pong']] }
 end
