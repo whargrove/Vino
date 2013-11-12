@@ -4,7 +4,7 @@ set :branch, 'master'
 set :deploy_to, "/var/www/#{fetch(:application)}"
 set :scm, :git
 set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
