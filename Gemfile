@@ -36,6 +36,8 @@ gem 'RedCloth'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'twitter-bootstrap-rails-cdn'
+
 # Development gems
 group :development do
 	# Fix for https://github.com/leehambley/sshkit/issues/39
