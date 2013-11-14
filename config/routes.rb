@@ -1,6 +1,7 @@
 Vino::Application.routes.draw do
 
 	root 'posts#index'
+	get 'feed', to: 'posts#index', format: 'atom'
 
 	get 'signup', to: 'users#new', as: 'signup'
 	get 'login', to: 'sessions#new', as: 'login'

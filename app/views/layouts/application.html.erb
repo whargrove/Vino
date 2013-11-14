@@ -9,6 +9,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= favicon_link_tag '/assets/favicon-0b698085e925ce538fdaf7b6367f63a5.ico' %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
   <header class="container">
