@@ -1,13 +1,19 @@
 Vino::Application.routes.draw do
+
+	root 'posts#index'
+
 	get 'signup', to: 'users#new', as: 'signup'
 	get 'login', to: 'sessions#new', as: 'login'
 	delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users
+	namespace :admin do
+		get '', to: 'posts#index'
+		resources :posts
+	end
+
+	resources :users
 	resources :posts
 	resources :sessions
-  
-  root 'posts#blog'
 
-  get 'ping' => proc { |env| [200, {}, ['pong']] }
+	get 'ping' => proc { |env| [200, {}, ['pong']] }
 end
