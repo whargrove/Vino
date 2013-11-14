@@ -1,7 +1,7 @@
 Vino::Application.routes.draw do
 
 	root 'posts#index'
-	get 'feed', to: 'posts#index', format: 'atom'
+	get 'atom', to: 'posts#index', format: 'atom'
 
 	get 'signup', to: 'users#new', as: 'signup'
 	get 'login', to: 'sessions#new', as: 'login'
@@ -17,4 +17,5 @@ Vino::Application.routes.draw do
 	resources :sessions
 
 	get 'ping' => proc { |env| [200, {}, ['pong']] }
+	
 end
