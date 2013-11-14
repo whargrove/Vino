@@ -1,34 +1,15 @@
-<h1>Posts</h1>
-
-<div class="table-responsive">
-	<table class="table table-hover">
-	  <thead>
-	    <tr>
-	      <th>Title</th>
-	      <th>Link</th>
-	      <th>Author</th>
-	      <th>Published date</th>
-	      <th>Actions</th>
-	    </tr>
-	  </thead>
-
-	  <tbody>
-	    <% @posts.each do |post| %>
-	      <tr>
-	        <td><%= link_to post.title, post %></td>
-	        <% if post.link %>
-		        <td><span class="glyphicon glyphicon-link"></span></td>
-	        <% else %>
-	        	<td>&nbsp;</td>
-	        <% end %>
-	        <td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
-	        <td><%= post.created_at.in_time_zone %></td>
-	        <td><%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-default btn-sm' %>
-							<%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %></td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
-</div>
-
-<%= link_to 'New Post', new_post_path, :class => 'btn btn-default btn-lg' %>
+<% @posts.each do |p| %>
+	<article>
+		<% if p.link %>
+			<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
+		<% else %>
+			<h2><%= p.title %></h2>
+		<% end %>
+		<% # Use RedCloth to display p.content as HTML after sanitizing %>
+		<%= sanitize RedCloth.new(p.content).to_html %>
+		<small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.created_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
+	</article>
+	<div class="separator">
+		<span class="glyphicon glyphicon-glass glass-separator"></span>
+	</div>
+<% end %>
