@@ -5,7 +5,7 @@ atom_feed do |feed|
 	@posts.each do |post|
 		feed.entry post, published: post.created_at do |entry|
 			entry.title post.title
-			entry.content post.content
+			entry.content RedCloth.new(post.content).to_html, type: 'html'
 			entry.author do |author|
 				author.name User.find(post.user_id).first_name + " " + User.find(post.user_id).last_name				
 			end			
