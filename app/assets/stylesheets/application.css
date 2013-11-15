@@ -21,7 +21,15 @@
 
 .separator {
 	width: 14px;
-	margin: 20px auto;
+	margin: 10px auto;
+}
+
+.rss-color {
+	transition: color .25s;
+}
+
+.rss-color:hover {
+	color: #FF9900;
 }
 
 /* Modifications to bootstrap.css */
