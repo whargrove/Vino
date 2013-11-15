@@ -14,13 +14,13 @@
 
 /* Custom CSS classes */
 
-.glass-separator {
+.caret-separator {
 	color: #F5F5F5;
 	font-size: 24px;
 }
 
 .separator {
-	width: 24px;
+	width: 14px;
 	margin: 20px auto;
 }
 
