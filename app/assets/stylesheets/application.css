@@ -32,6 +32,14 @@
 	color: #FF9900;
 }
 
+#rss {
+	margin-bottom: 0px;
+}
+
+footer {
+	margin-bottom: 10px;
+}
+
 /* Modifications to bootstrap.css */
 
 header {
