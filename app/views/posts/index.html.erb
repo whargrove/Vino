@@ -1,6 +1,6 @@
 <% content_for :head, auto_discovery_link_tag(:atom, posts_url(format: "atom")) %>
 
-<% @posts.each do |p| %>
+<% @posts.each_with_index do |p, i| %>
 	<article>
 		<% if p.link %>
 			<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
@@ -11,8 +11,10 @@
 		<%= sanitize RedCloth.new(p.content).to_html %>
 		<small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.created_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
 	</article>
-	<div class="separator">
-		<!-- <span class="glyphicon glyphicon-glass glass-separator"></span> -->
-		<i class="fa fa-caret-down caret-separator"></i>
-	</div>
+
+	<% unless ( i + 1 ) == @posts.length %>
+		<div class="separator">
+			<i class="fa fa-caret-down caret-separator"></i>
+		</div>
+	<% end %>
 <% end %>
