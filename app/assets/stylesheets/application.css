@@ -41,6 +41,12 @@ footer {
 	margin-bottom: 25px;
 }
 
+/* app/views/layouts/application.html.erb */
+
+#identities {
+	margin-top: 58px;
+}
+
 /* Modifications to bootstrap.css */
 
 header {

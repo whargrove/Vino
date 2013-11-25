@@ -3,6 +3,7 @@
 <head>
   <title>The blog of Wes Hargrove</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
   <%= twitter_bootstrap_stylesheet_link_tag :netdna, force: true, version: '3.0.2' %>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= twitter_bootstrap_javascript_include_tag :netdna, force: true, version: '3.0.2' %>
@@ -18,9 +19,20 @@
   		<p class="text-right">Logged in as <%= current_user.first_name %>.
   		<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
     <% end %>
-  	<h1 class="text-left"><small>the blog of</small><br><%= link_to 'Wes Hargrove', root_path %></h1>
+    <div class="row">
+      <div class="col-sm-7">
+        <h1 class="text-left"><small>the blog of</small><br><%= link_to 'Wes Hargrove', root_path %></h1>
+      </div>
+      <div class="col-sm-5">
+        <ul class="nav nav-pills pull-right hidden-xs" id="identities">
+          <li><a href="http://www.twitter.com/whargrove" data-toggle="tooltip" data-placement="bottom" title="@whargrove" id="id-twitter"><i class="fa fa-twitter fa-2x"></i></a></li>
+          <li><a href="http://www.github.com/whargrove" data-toggle="tooltip" title="Github" id="id-github"><i class="fa fa-github-alt fa-2x"></i></a></li>
+          <li><a href="http://resume.weshargrove.com/" data-toggle="tooltip" title="r&eacute;sum&eacute;" id="id-resume"><i class="fa fa-file-text fa-2x"></i></a></li>
+          <li><a href="http://whphoto.co/" data-toggle="tooltip" title="photography" id="id-photography"><i class="fa fa-camera fa-2x"></i></a></li>
+        </ul>
+      </div>
+    </div>
   </header>
-
 
 	<div class="container">
 		<%= yield %>
@@ -32,6 +44,5 @@
     </p>
 		<p class="text-center text-muted"><small>Powered by <%= link_to 'Vino', 'https://github.com/whargrove/Vino' %>. Hosted on <%= link_to 'Digital Ocean', 'https://www.digitalocean.com/?refcode=f391b77be531' %>.</small></p>
 	</footer>
-
 </body>
 </html>
