@@ -80,6 +80,12 @@ h6,
   line-height: 1.1;
 }
 
+h1 small {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('/assets/glyphicons-halflings-regular-ab2f6984951c07fd89e6afdefabd93c7.eot');

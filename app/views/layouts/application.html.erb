@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WesHargrove.com</title>
+  <title>The blog of Wes Hargrove</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <%= twitter_bootstrap_stylesheet_link_tag :netdna, force: true, version: '3.0.2' %>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
@@ -18,7 +18,7 @@
   		<p class="text-right">Logged in as <%= current_user.first_name %>.
   		<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
     <% end %>
-  	<h1 class="text-left"><%= link_to 'WesHargrove.com', root_path %></h1>
+  	<h1 class="text-left"><small>the blog of</small><br><%= link_to 'Wes Hargrove', root_path %></h1>
   </header>
 
 
