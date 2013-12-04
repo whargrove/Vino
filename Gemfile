@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg'
@@ -15,9 +14,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -28,7 +24,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'
 
 # Use RedCloth for converting posts into HTML
 gem 'RedCloth'
@@ -41,7 +37,7 @@ gem 'twitter-bootstrap-rails-cdn'
 # Development gems
 group :development do
 	# Fix for https://github.com/leehambley/sshkit/issues/39
-	gem 'sshkit', '1.0.0', github: 'leehambley/sshkit', require: false
+	gem 'sshkit', github: 'leehambley/sshkit', require: false
 	gem 'capistrano', '~> 3.0.1', require: false
 	gem 'capistrano-rails', '~> 1.0.0', require: false
 	gem 'capistrano-rbenv', github: 'capistrano/rbenv', require: false
