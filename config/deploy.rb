@@ -4,17 +4,13 @@ set :branch, 'master'
 set :deploy_to, "/var/www/#{fetch(:application)}"
 set :scm, :git
 set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :ping_url, "http://weshargrove.com/ping"
 set :rbenv_type, :user
 set :rbenv_ruby, '2.0.0-p353'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
 namespace :deploy do
