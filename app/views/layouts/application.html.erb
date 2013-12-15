@@ -18,11 +18,30 @@
   <%= yield :head %>
 </head>
 <body>
+	<% if current_user %>
+  <!-- Begin admin navigation -->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Hi, <%= current_user.first_name %>!</a>
+    </div><!-- /.navbar-header -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Posts', admin_posts_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Log out',  logout_path, method: :delete %></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+  <% end %>
   <header class="container">
-  	<% if current_user %>
-  		<p class="text-right">Logged in as <%= current_user.first_name %>.
-  		<%= link_to '(Not ' + current_user.first_name + '?)', logout_path, method: :delete %></p>
-    <% end %>
     <div class="row">
       <div class="col-sm-7">
         <h1 class="text-left"><small>the blog of</small><br><%= link_to 'Wes Hargrove', root_path %></h1>
