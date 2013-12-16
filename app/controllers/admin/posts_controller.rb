@@ -18,6 +18,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.new
 
     # Use hipsterjesus.com API to get placeholder text for posts/new text area >_>
+    require 'net/http'
     uri = URI('http://hipsterjesus.com/api/')
     params = { :paras => 1, :type => 'hipster-centric', :html => false }
     uri.query = URI.encode_www_form(params)
