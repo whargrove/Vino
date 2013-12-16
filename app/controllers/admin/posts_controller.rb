@@ -16,6 +16,17 @@ class Admin::PostsController < ApplicationController
   # GET admin/posts/new
   def new
     @post = Post.new
+
+    # Use hipsterjesus.com API to get placeholder text for posts/new text area >_>
+    uri = URI('http://hipsterjesus.com/api/')
+    params = { :paras => 1, :type => 'hipster-centric', :html => false }
+    uri.query = URI.encode_www_form(params)
+    response = Net::HTTP.get_response(uri)
+    if response.is_a?(Net::HTTPSuccess)
+      @hipster_placeholder = JSON.parse(response.body)["text"]
+    else 
+      @hipster_placeholder = nil
+    end
   end
 
   # GET admin/posts/:id/edit
