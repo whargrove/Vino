@@ -34,9 +34,10 @@
 	  <div class="form-group">
 	    <%= f.label :content %><br>
 	    <%= f.text_area :content, :class => 'form-control', :rows => '15' %>
+      <span class="help-block">Text is rendered as HTML using <a href="http://redcloth.org/textile/">RedCloth</a>.</span>
 	  </div>
     <div class="form-group">
-      <%= f.submit :class => 'btn btn-default btn-lg btn-block' %>
+      <%= f.submit :class => 'btn btn-default' %>
     </div>
 	</form>
 <% end %>

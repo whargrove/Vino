@@ -1,7 +1,7 @@
-<div class="well well-sm">Post content is converted to HTML using RedCloth. For more information about using Textile syntax, go to the <%= link_to 'Textile Reference Manual for RedCloth 4', 'http://redcloth.org/textile/' %></div>
+<div class="row">
+  <div class="col-xs-12">
+    <h2><a href="<%= admin_posts_path %>"><i class="fa fa-angle-left"></i></a> New Post</h2>
+  </div>
+</div>
 
 <%= render 'form' %>
-
-<div class="form-group">
-	<%= link_to 'Back', admin_posts_path, :class => 'btn btn-default' %>
-</div>
