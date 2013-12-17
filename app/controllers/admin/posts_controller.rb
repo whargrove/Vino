@@ -39,25 +39,25 @@ class Admin::PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post, notice: "Post was successfully created."
+      redirect_to admin_posts_url, notice: "Post was created."
     else
-      render action: 'new'
+      render action: 'new', error: "Something happened."
     end
   end
 
   # PATCH/PUT admin/posts/:id
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "Post was successfully updated."
+      redirect_to admin_posts_url, notice: "Post was updated."
     else
-      render action: 'edit'
+      render action: 'edit', error: "Something happened."
     end
   end
 
   # DELETE admin/posts/:id
   def destroy
     @post.destroy
-    redirect_to admin_posts_url
+    redirect_to admin_posts_url, notice: "Post was deleted."
   end
 
   private
