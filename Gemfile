@@ -29,10 +29,13 @@ gem 'bcrypt-ruby'
 # Use RedCloth for converting posts into HTML
 gem 'RedCloth'
 
-# Use unicorn as the app server
-gem 'unicorn'
-
+# Use twitter-bootstrap-rails-cdn to fetch bootstrap assets
 gem 'twitter-bootstrap-rails-cdn'
+
+# Use rspec-rails for testing
+group :development, :test do
+  gem 'rspec-rails', '~> 2.14.0'
+end
 
 # Development gems
 group :development do
