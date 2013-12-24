@@ -35,6 +35,7 @@ gem 'twitter-bootstrap-rails-cdn'
 # Use rspec-rails for testing
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 # Development gems
