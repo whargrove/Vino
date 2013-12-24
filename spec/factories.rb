@@ -7,12 +7,8 @@ FactoryGirl.define do
     password_confirmation 'foo%bar'
   end
 
-  sequence :title do
-    "post_#{n}"
-  end
-
   factory :post do
-    title
+    title 'post_1'
     content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
     user_id 1
     link true
