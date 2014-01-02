@@ -36,6 +36,8 @@ gem 'twitter-bootstrap-rails-cdn'
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'ruby-progressbar'
+  gem 'fuubar', github: 'jeffkreeftmeijer/fuubar', branch: 'develop'
 end
 
 # Development gems
