@@ -8,12 +8,12 @@ describe Post do
 
   it "has one record" do
     post = create(:post)
-    expect(Post.where(:title => 'post_1')).to have(1).record
+    expect(Post.where(:title => 'post')).to have(1).record
   end
 
   it "counts only records that match a query" do
     post = create(:post)
-    expect(Post.where(:title => 'post_1')).to have(1).record
+    expect(Post.where(:title => 'post')).to have(1).record
     expect(Post.where(:title => 'post_foo')).to have(0).record
   end
 end

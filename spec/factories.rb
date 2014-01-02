@@ -8,10 +8,18 @@ FactoryGirl.define do
   end
 
   factory :post do
-    title 'post_1'
+    title 'post'
     content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
     user_id 1
     link true
     link_url 'http://www.weshargrove.com/'
+
+    factory :invalid_post do
+      title ''
+      content ''
+      user_id nil
+      link true
+      link_url ''
+    end
   end
 end
