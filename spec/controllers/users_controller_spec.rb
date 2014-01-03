@@ -17,9 +17,9 @@ describe UsersController do
       }.to change(User, :count).by(1)
     end
 
-    it 'redirects to /' do
+    it 'redirects to /admin/posts' do
       post :create, user: attributes_for(:user)
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to admin_posts_url
     end
   end
 end
