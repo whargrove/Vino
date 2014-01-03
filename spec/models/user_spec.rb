@@ -21,5 +21,9 @@ describe User do
     expect(User.new(user_name: nil)).to have(1).errors_on(:user_name)
   end
 
-  it 'is invalid with a duplicate user name'
+  it 'is invalid with a duplicate user name' do
+    user = create(:user)
+    other_user = User.new(first_name: 'Werner', last_name: 'Heisenberg', user_name: 'heisenberg')
+    expect(other_user).to have(1).errors_on(:user_name)
+  end
 end
