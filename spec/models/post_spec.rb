@@ -7,7 +7,6 @@ describe Post do
   end
 
   it 'is invalid without a title' do
-    pending("Post model needs validations")
     expect(Post.new(title: nil)).to have(1).errors_on(:title)
   end
 
