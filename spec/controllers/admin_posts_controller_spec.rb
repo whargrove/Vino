@@ -2,70 +2,85 @@ require 'spec_helper'
 
 describe Admin::PostsController do
   describe 'GET #index' do
-    it 'redirects to /login when not authenticated' do
-      get :index
-      expect(response).to redirect_to('/login')
+    context 'user not logged in' do
+      it 'redirects to /login' do
+        get :index
+        expect(response).to redirect_to('/login')
+      end
     end
 
-    it 'assigns @posts' do
-      user = create(:user)
-      session[:user_id] = user.id
-      post = create(:post)
-      get :index
-      expect(assigns(:posts)).to eq([post])
-    end
+    context 'user logged in' do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
 
-    it 'renders admin/posts#index template' do
-      user = create(:user)
-      session[:user_id] = user.id
-      get :index
-      expect(response).to render_template('index')
+      it 'assigns @posts' do
+        post = create(:post)
+        get :index
+        expect(assigns(:posts)).to eq([post])
+      end
+
+      it 'renders #index template' do
+        get :index
+        expect(response).to render_template('index')
+      end
     end
   end
 
   describe 'GET #new' do
-    it 'redirects to /login when not authenticated' do
-      get :new
-      expect(response).to redirect_to('/login')
+    context 'user not logged in' do
+      it 'redirects to /login' do
+        get :new
+        expect(response).to redirect_to('/login')
+      end
     end
+    
+    context 'user logged in' do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
 
-    it 'should assign a new post to @post' do
-      user = create(:user)
-      session[:user_id] = user.id
-      post = create(:post)
-      get :new
-      assigns(:post).should be_a_new(Post)
-    end
+      it 'assigns a new post to @post' do
+        post = create(:post)
+        get :new
+        assigns(:post).should be_a_new(Post)
+      end
 
-    it 'renders admin/posts#new template' do
-      user = create(:user)
-      session[:user_id] = user.id
-      get :new
-      expect(response).to render_template('new')
+      it 'renders #new' do
+        get :new
+        expect(response).to render_template('new')
+      end
     end
   end
 
   describe 'GET #edit' do
-    it 'redirects to /login when not authenticated' do
-      post = create(:post)
-      get :edit, :id => post.id
-      expect(response).to redirect_to('/login')
+    context 'user not logged in' do
+      it 'redirects to /login' do
+        post = create(:post)
+        get :edit, :id => post.id
+        expect(response).to redirect_to('/login')
+      end
     end
 
-    it 'assigns @post' do
-      user = create(:user)
-      session[:user_id] = user.id
-      post = create(:post)
-      get :edit, :id => post.id
-      expect(assigns(:post)).to eq(post)
-    end
+    context 'user logged in' do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
+      
+      it 'assigns @post' do
+        post = create(:post)
+        get :edit, :id => post.id
+        expect(assigns(:post)).to eq(post)
+      end
 
-    it 'renders admin/posts#edit template' do
-      user = create(:user)
-      session[:user_id] = user.id
-      post = create(:post)
-      get :edit, :id => post.id
-      expect(response).to render_template('edit')
+      it 'renders #edit' do
+        post = create(:post)
+        get :edit, :id => post.id
+        expect(response).to render_template('edit')
+      end
     end
   end
 
