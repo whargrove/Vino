@@ -10,8 +10,12 @@ describe SessionsController do
     end
 
     context 'user logged in' do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
+
       it 'redirects to /admin/posts' do
-        pending("Will be implemented when #16 is closed")
         get :new
         expect(response).to redirect_to(admin_posts_url)
       end

@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
   def new
+    if current_user.nil?
+      render 'new'
+    else
+      redirect_to admin_posts_path
+    end
   end
 
   def create
@@ -9,7 +14,7 @@ class SessionsController < ApplicationController
   		redirect_to admin_posts_path
   	else
   		flash.now.alert = "Email or password is invalid"
-  		render "new"
+  		render 'new'
   	end
   end
 
