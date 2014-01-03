@@ -1,19 +1,25 @@
 require 'spec_helper'
 
 describe User do
-  it "has no records in the database" do
-    expect(User).to have(:no).records
-    expect(User).to have(0).records
+  it 'is valid with a first name, last name, and user name' do
+    user = create(:user)
+    expect(user).to be_valid
   end
 
-  it "has one record" do
-    user = create(:user)
-    expect(User.where(:user_name => 'heisenberg')).to have(1).record
+  it 'is invalid without a first name' do
+    pending("User model needs validations")
+    expect(User.new(first_name: nil)).to have(1).errors_on(:first_name)
   end
 
-  it "counts only records that match a query" do
-    user = create(:user)
-    expect(User.where(:user_name => 'heisenberg')).to have(1).record
-    expect(User.where(:user_name => 'gfring')).to have(0).records
+  it 'is invalid without a last name' do
+    pending("User model needs validations")
+    expect(User.new(last_name: nil)).to have(1).errors_on(:last_name)
   end
+
+  it 'is invalid without a user name' do
+    pending("User model needs validations")
+    expect(User.new(user_name: nil)).to have(1).errors_on(:user_name)
+  end
+
+  it 'is invalid with a duplicate user name'
 end
