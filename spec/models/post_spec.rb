@@ -10,13 +10,7 @@ describe Post do
     expect(Post.new(title: nil)).to have(1).errors_on(:title)
   end
 
-  it 'is invalid without content' do
-    pending("Post model needs validations")
-    expect(Post.new(content: nil)).to have(1).errors_on(:content)
-  end
-
   it 'is invalid without a user_id' do
-    pending("Post model needs validations")
     expect(Post.new(user_id: nil)).to have(1).errors_on(:user_id)
   end
 
