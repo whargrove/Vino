@@ -16,8 +16,7 @@ describe Post do
 
   context 'link is true' do
     it 'is invalid without a link_url' do
-      pending("Post model needs validations")
-      expect(Post.new(link_url: nil)).to have(1).errors_on(:link_url)
+      expect(Post.new(link: true, link_url: nil)).to have(1).errors_on(:link_url)
     end
   end
 end
