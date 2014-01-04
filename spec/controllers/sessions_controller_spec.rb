@@ -52,7 +52,10 @@ describe SessionsController do
 
   describe 'DELETE #destroy' do
     context 'user not logged in' do
-      it 'redirects to #new (as /login)'
+      it 'redirects to #new (as /login)' do
+        delete :destroy, id: session[:user_id]
+        expect(response).to redirect_to(login_url)
+      end
     end
 
     context 'user logged in' do
