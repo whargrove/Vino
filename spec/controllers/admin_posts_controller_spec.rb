@@ -113,14 +113,12 @@ describe Admin::PostsController do
 
       context 'without valid attributes' do
         it 'does not create a new post' do
-          pending("Post model needs validation rules")
           expect {
             post :create, post: attributes_for(:invalid_post)
           }.to_not change(Post, :count).by(1)
         end
 
         it 're-renders #new' do
-          pending("Post model needs validation rules")
           post :create, post: attributes_for(:invalid_post)
           expect(response).to render_template('new')
         end
@@ -167,7 +165,6 @@ describe Admin::PostsController do
 
       context 'without valid attributes' do
         it 'does not change post attributes' do
-          pending("Post model needs validation rules")
           patch :update, id: @post, post: attributes_for(:invalid_post)
           @post.reload
           expect(@post.title).to_not eq('')
@@ -175,8 +172,7 @@ describe Admin::PostsController do
         end
 
         it 're-renders #edit' do
-          pending("Post model needs validation rules")
-          patch :edit, post: attributes_for(:invalid_post)
+          patch :edit, id: @post, post: attributes_for(:invalid_post)
           expect(response).to render_template('edit')
         end
       end
