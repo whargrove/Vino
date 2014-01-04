@@ -32,6 +32,9 @@ gem 'RedCloth'
 # Use twitter-bootstrap-rails-cdn to fetch bootstrap assets
 gem 'twitter-bootstrap-rails-cdn'
 
+# Use StatHat to track statistics
+gem 'stathat'
+
 # Use rspec-rails for testing
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
