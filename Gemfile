@@ -41,10 +41,8 @@ end
 
 # Development gems
 group :development do
-	# Fix for https://github.com/leehambley/sshkit/issues/39
-	gem 'sshkit', github: 'leehambley/sshkit', require: false
-	gem 'capistrano', '~> 3.0.1', require: false
-	gem 'capistrano-rails', '~> 1.0.0', require: false
-	gem 'capistrano-rbenv', github: 'capistrano/rbenv', require: false
-	gem 'capistrano-bundler', '~> 1.0.0', require: false
+	gem 'capistrano', '~> 3.0.1'
+	gem 'capistrano-rails', '~> 1.1'
+	gem 'capistrano-rbenv', '~> 2.0'
+	gem 'capistrano-bundler', '~> 1.1.1'
 end
