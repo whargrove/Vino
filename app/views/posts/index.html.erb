@@ -1,3 +1,7 @@
+<% if Rails.env.production? && current_user.nil? %>
+  <% StatHat::API.ez_post_count("Blog Page View", CONFIG[:stathat_ez_api_key], 1) %>
+<% end %>
+
 <% content_for :head, auto_discovery_link_tag(:atom, posts_url(format: "atom")) %>
 
 <% @posts.each_with_index do |p, i| %>
