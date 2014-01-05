@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :user_id
   validates :link_url, presence: { if: :link }
-  validate :link_url_format_valid?
+  validate :link_url_format_valid?, if: :link
 
   public
 
