@@ -5,6 +5,14 @@ FactoryGirl.define do
     user_name 'heisenberg'
     password 'foo%bar'
     password_confirmation 'foo%bar'
+
+    factory :invalid_user do
+      first_name ''
+      last_name ''
+      user_name ''
+      password ''
+      password_confirmation ''
+    end
   end
 
   factory :post do

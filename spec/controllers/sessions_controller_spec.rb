@@ -28,15 +28,33 @@ describe SessionsController do
         @user = create(:user)
       end
 
-      it 'creates a new session' do
-        post :create, user_name: @user.user_name, password: @user.password
-        session[:user_id].should eq(@user.id)
-        session[:user_id].should_not eq(nil)
+      context 'invalid login credentials' do
+        it 'does not create a new session' do
+          post :create, user_name: @user.user_name, password: 'foo'
+          session[:user_id].should_not eq(@user.id)
+          session[:user_id].should eq(nil)
+        end
+        it 'redirects to /login' do
+          post :create, user_name: @user.user_name, password: 'foo'
+          expect(response).to redirect_to(login_url) 
+        end
+        it 'has an error message' do
+          post :create, user_name: @user.user_name, password: 'foo'
+          flash[:alert].should eq("User name or password is invalid")
+        end
       end
 
-      it 'redirects to /admin/posts' do
-        post :create, user_name: @user.user_name, password: @user.password
-        expect(response).to redirect_to(admin_posts_url)
+      context 'using valid login credentials' do
+        it 'creates a new session' do
+          post :create, user_name: @user.user_name, password: @user.password
+          session[:user_id].should eq(@user.id)
+          session[:user_id].should_not eq(nil)
+        end
+
+        it 'redirects to /admin/posts' do
+          post :create, user_name: @user.user_name, password: @user.password
+          expect(response).to redirect_to(admin_posts_url)
+        end
       end
     end
 
