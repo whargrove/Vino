@@ -21,6 +21,7 @@ FactoryGirl.define do
     user_id 1
     link true
     link_url 'http://www.weshargrove.com/'
+    published true
 
     factory :invalid_post do
       title ''
@@ -28,6 +29,7 @@ FactoryGirl.define do
       user_id nil
       link true
       link_url ''
+      published true
     end
   end
 end
