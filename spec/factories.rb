@@ -23,6 +23,15 @@ FactoryGirl.define do
     link_url 'http://www.weshargrove.com/'
     published true
 
+    factory :draft_post do
+      title 'post'
+      content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
+      user_id 1
+      link true
+      link_url 'http://www.weshargrove.com/'
+      published false
+    end
+
     factory :invalid_post do
       title ''
       content ''
