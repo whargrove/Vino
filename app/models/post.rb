@@ -8,6 +8,16 @@ class Post < ActiveRecord::Base
 
   public
 
+  def draft?
+    if !published
+      true
+    else
+      false
+    end
+  end
+
+  private
+
   def link_url_format_valid?
     uri = URI.parse(link_url)
     if !uri.kind_of?(URI::HTTP)

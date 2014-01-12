@@ -24,4 +24,18 @@ describe Post do
       expect(Post.new(link: true, link_url: 'foo')).to have(1).errors_on(:link_url)
     end
   end
+
+  context 'published is false' do
+    it 'is a draft' do
+      post = Post.new(published: false)
+      expect(post.draft?).to be_true
+    end
+  end
+
+  context 'published is true' do
+    it 'is not a draft' do
+      post = Post.new(published: true)
+      expect(post.draft?).to be_false
+    end
+  end
 end
