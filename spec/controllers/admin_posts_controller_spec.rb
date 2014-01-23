@@ -35,7 +35,7 @@ describe Admin::PostsController do
         expect(response).to redirect_to('/login')
       end
     end
-    
+
     context 'user logged in' do
       before :each do
         user = create(:user)
@@ -69,7 +69,7 @@ describe Admin::PostsController do
         user = create(:user)
         session[:user_id] = user.id
       end
-      
+
       it 'assigns @post' do
         post = create(:post)
         get :edit, :id => post.id
@@ -95,7 +95,7 @@ describe Admin::PostsController do
     context 'user logged in' do
       before :each do
         user = create(:user)
-        session[:user_id] = user.id        
+        session[:user_id] = user.id
       end
 
       context 'with valid attributes' do
@@ -108,6 +108,22 @@ describe Admin::PostsController do
         it 'redirects to /admin/posts' do
           post :create, post: attributes_for(:post)
           expect(response).to redirect_to admin_posts_url
+        end
+
+        context 'published is false' do
+          it 'saves as draft' do
+            post :create, post: attributes_for(:draft_post)
+            post = Post.find_by title: 'post'
+            post.published.should_not be_true
+          end
+        end
+
+        context 'published is true' do
+          it 'saves as post' do
+            post :create, post: attributes_for(:post)
+            post = Post.find_by title: 'post'
+            post.published.should be_true
+          end
         end
       end
 
@@ -141,7 +157,7 @@ describe Admin::PostsController do
     context 'user logged in' do
       before :each do
         user = create(:user)
-        session[:user_id] = user.id        
+        session[:user_id] = user.id
       end
 
       context 'with valid attributes' do
@@ -160,6 +176,22 @@ describe Admin::PostsController do
         it 'redirects to /admin/posts' do
           patch :update, id: @post, post: attributes_for(:post)
           expect(response).to redirect_to admin_posts_url
+        end
+
+        context 'published is false' do
+          it 'saves as draft' do
+            patch :update, id: @post, post: attributes_for(:draft_post)
+            post = Post.find_by title: 'post'
+            post.published.should_not be_true
+          end
+        end
+
+        context 'published is true' do
+          it 'saves as post' do
+            patch :update, id: @post, post: attributes_for(:post)
+            post = Post.find_by title: 'post'
+            post.published.should be_true
+          end
         end
       end
 
@@ -194,7 +226,7 @@ describe Admin::PostsController do
     context 'user logged in' do
       before :each do
         user = create(:user)
-        session[:user_id] = user.id        
+        session[:user_id] = user.id
       end
 
       it 'deletes the post' do
