@@ -33,7 +33,9 @@
 	        <td>&nbsp;</td>
 	        <% end %>
 					<td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
-					<td><%= post.created_at.in_time_zone %></td>
+					<td><% if !post.draft? %>
+								<%= post.created_at.in_time_zone %>
+							<% end %></td>
 					<td>
 						<%= link_to edit_admin_post_path(post), :class => 'btn btn-default btn-sm' do %>
 							<i class="fa fa-edit fa-lg"></i> Edit
