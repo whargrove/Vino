@@ -49,6 +49,25 @@ describe PostsController do
         get :show, :id => post.id
         expect(response).to render_template('show')
       end
+
+      it 'unable to view a draft' do
+        draft = create(:draft_post)
+        get :show, :id => draft.id
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    context 'user logged in' do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
+
+      it 'views a draft' do
+        draft = create(:draft_post)
+        get :show, :id => draft.id
+        expect(response).to render_template('show')
+      end
     end
   end
 end

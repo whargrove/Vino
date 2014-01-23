@@ -17,6 +17,14 @@ class PostsController < ApplicationController
 
   # GET /posts/:id
   def show
+    if current_user
+      # Go ahead
+      render 'show'
+    elsif !current_user && @post.draft?
+      # Redirect to /
+      # beacuse visitors should not view drafts
+      redirect_to root_url
+    end
   end
 
   private
