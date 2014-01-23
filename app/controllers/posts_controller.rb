@@ -1,9 +1,17 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
-  
+
   # GET /posts
   def index
-    @posts = Post.order('created_at DESC').limit(5)
+    if current_user
+      # Get the 5 most recent posts
+      @posts = Post.order('created_at DESC').limit(5)
+    else
+      # Get the 5 most recent posts that are published
+      @posts = Post.order('created_at DESC').where({ published: true }).limit(5)
+    end
+
+    # Set the time zone
     Time.zone = 'Pacific Time (US & Canada)'
   end
 
