@@ -1,7 +1,7 @@
 class Admin::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :new, :edit, :create, :update, :destroy]
-  
+
   # GET admin/posts
   def index
     @posts = Post.order('created_at DESC')
@@ -25,7 +25,7 @@ class Admin::PostsController < ApplicationController
     response = Net::HTTP.get_response(uri)
     if response.is_a?(Net::HTTPSuccess)
       @hipster_placeholder = JSON.parse(response.body)["text"]
-    else 
+    else
       @hipster_placeholder = nil
     end
   end
@@ -38,6 +38,13 @@ class Admin::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    # Save as draft or publish the post
+    if params[:commit] == 'Save'
+      @post.published = false
+    elsif params[:commit] == 'Publish'
+      @post.published = true
+    end
+
     if @post.save
       redirect_to admin_posts_url, notice: "Post was created."
     else
@@ -47,6 +54,13 @@ class Admin::PostsController < ApplicationController
 
   # PATCH/PUT admin/posts/:id
   def update
+    # Save as draft or publish the post
+    if params[:commit] == 'Save'
+      @post.published = false
+    elsif params[:commit] == 'Publish'
+      @post.published = true
+    end
+
     if @post.update(post_params)
       redirect_to admin_posts_url, notice: "Post was updated."
     else
@@ -68,6 +82,6 @@ class Admin::PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :link, :link_url)
+      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :published)
     end
 end
