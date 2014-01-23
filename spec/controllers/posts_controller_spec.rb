@@ -9,9 +9,29 @@ describe PostsController do
         expect(assigns(:posts)).to eq([post])
       end
 
+      it '@posts are published' do
+        post = create(:post)
+        draft = create(:draft_post)
+        get :index
+        expect(assigns(:posts)).to eq([post])
+      end
+
       it 'renders posts#index template' do
         get :index
         expect(response).to render_template('index')
+      end
+    end
+
+    context 'user logged in' do
+      before :each do
+        user = create(:user)
+        session[:user_id] = user.id
+      end
+
+      it '@posts contains drafts' do
+        draft = create(:draft_post)
+        get :index
+        expect(assigns(:posts)).to eq([draft])
       end
     end
   end
