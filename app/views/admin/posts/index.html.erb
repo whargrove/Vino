@@ -27,9 +27,9 @@
 	    <% @posts.each do |post| %>
 	      <tr>
 	        <td><% if post.draft? %>
-				        <%= link_to post.title, post %><span class="text-muted">&nbsp;(Draft)</span>
+				        <%= link_to truncate(post.title, length: 45, separator: ' '), post %><span class="text-muted">&nbsp;(Draft)</span>
 			        <% else %>
-			        	<%= link_to post.title, post %>
+			        	<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
 		        	<% end %></td>
 	        <% if post.link %>
 		      <td><span class="glyphicon glyphicon-link"></span></td>
