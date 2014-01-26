@@ -113,7 +113,7 @@ describe Admin::PostsController do
         context 'published is false' do
           it 'saves as draft' do
             post :create, post: attributes_for(:draft_post)
-            post = Post.find_by title: 'post'
+            post = Post.find_by title: 'draft post'
             post.published.should_not be_true
           end
         end
@@ -181,7 +181,7 @@ describe Admin::PostsController do
         context 'published is false' do
           it 'saves as draft' do
             patch :update, id: @post, post: attributes_for(:draft_post)
-            post = Post.find_by title: 'post'
+            post = Post.find_by title: 'draft post'
             post.published.should_not be_true
           end
         end

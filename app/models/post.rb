@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 
   validates_presence_of :title
+  validates_uniqueness_of :title
   validates_presence_of :user_id
   validates :link_url, presence: { if: :link }
   validate :link_url_format_valid?, if: :link

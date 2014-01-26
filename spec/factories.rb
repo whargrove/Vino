@@ -24,7 +24,7 @@ FactoryGirl.define do
     published true
 
     factory :draft_post do
-      title 'post'
+      title 'draft post'
       content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
       user_id 1
       link true

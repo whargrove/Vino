@@ -10,6 +10,11 @@ describe Post do
     expect(Post.new(title: nil)).to have(1).errors_on(:title)
   end
 
+  it 'is invalid with a duplicate title' do
+    first_post = create(:post)
+    expect(Post.new(title: 'post')).to have(1).errors_on(:title)
+  end
+
   it 'is invalid without a user_id' do
     expect(Post.new(user_id: nil)).to have(1).errors_on(:user_id)
   end
