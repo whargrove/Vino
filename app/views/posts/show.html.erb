@@ -3,5 +3,9 @@
 <% else %>
   <h2><%= @post.title %></h2>
 <% end %>
-<% # Use RedCloth to display p.content as HTML after sanitizing %>
-<%= sanitize RedCloth.new(@post.content).to_html %>
+<% # Check if Post.content exists otherwise RedCloth will raise TypeError %>
+<% if @post.content %>
+  <% # Convert Post.content to sanitized HTML %>
+  <%= sanitize RedCloth.new(@post.content).to_html %>
+<% end %>
+

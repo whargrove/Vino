@@ -11,8 +11,11 @@
 		<% else %>
 			<h2><%= p.title %></h2>
 		<% end %>
-		<% # Use RedCloth to display p.content as HTML after sanitizing %>
-		<%= sanitize RedCloth.new(p.content).to_html %>
+		<% # Check if Post.content exists otherwise RedCloth will raise TypeError %>
+		<% if p.content %>
+  		<% # Convert Post.content to sanitized HTML %>
+  		<%= sanitize RedCloth.new(p.content).to_html %>
+		<% end %>
 		<small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.created_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
 	</article>
 
