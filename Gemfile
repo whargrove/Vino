@@ -29,8 +29,8 @@ gem 'bcrypt-ruby'
 # Use RedCloth for converting posts into HTML
 gem 'RedCloth'
 
-# Use twitter-bootstrap-rails-cdn to fetch bootstrap assets
-gem 'twitter-bootstrap-rails-cdn'
+# Use bootstrap-sass
+gem 'bootstrap-sass', '~> 3.1.0'
 
 # Use StatHat to track statistics
 gem 'stathat'
