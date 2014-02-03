@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   validates :link_url, presence: { if: :link }
   validate :link_url_format_valid?, if: :link
 
+  # will_paginate number of posts per page
+  self.per_page = 5
+
   def should_generate_new_friendly_id?
     title_changed?
   end

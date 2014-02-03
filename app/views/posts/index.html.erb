@@ -25,3 +25,8 @@
 		</div>
 	<% end %>
 <% end %>
+
+<%= will_paginate @posts,
+	renderer: BootstrapPagination::Rails,
+	page_links: false, class: "center-block",
+	previous_label: "Previous", next_label: "Next" %>
