@@ -1,7 +1,15 @@
 <% if @post.link %>
-  <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + @post.title, @post.link_url %></h2>
+  <% if @post.draft? %>
+    <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + @post.title, @post.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+  <% else %>
+    <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + @post.title, @post.link_url %></h2>
+  <% end %>
 <% else %>
-  <h2><%= @post.title %></h2>
+  <% if @post.draft? %>
+    <h2><%= @post.title %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+  <% else %>
+    <h2><%= @post.title %></h2>
+  <% end %>
 <% end %>
 <% # Check if Post.content exists otherwise RedCloth will raise TypeError %>
 <% if @post.content %>

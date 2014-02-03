@@ -7,9 +7,17 @@
 <% @posts.each_with_index do |p, i| %>
 	<article>
 		<% if p.link %>
-			<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
+  		<% if p.draft? %>
+    		<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+  		<% else %>
+    		<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
+  		<% end %>
 		<% else %>
-			<h2><%= p.title %></h2>
+  		<% if p.draft? %>
+    		<h2><%= p.title %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+  		<% else %>
+    		<h2><%= p.title %></h2>
+  		<% end %>
 		<% end %>
 		<% # Check if Post.content exists otherwise RedCloth will raise TypeError %>
 		<% if p.content %>
