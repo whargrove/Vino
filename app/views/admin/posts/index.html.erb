@@ -27,7 +27,7 @@
 	    <% @posts.each do |post| %>
 	      <tr>
 	        <td><% if post.draft? %>
-				        <%= link_to truncate(post.title, length: 45, separator: ' '), post %><span class="text-muted">&nbsp;(Draft)</span>
+				        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default">Draft</span>
 			        <% else %>
 			        	<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
 		        	<% end %></td>
@@ -38,13 +38,13 @@
 	        <% end %>
 					<td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
 					<td><% if !post.draft? %>
-								<%= post.created_at.in_time_zone %>
+								<%= post.created_at.in_time_zone.strftime('%I:%M %p %m/%d/%Y') %>
 							<% end %></td>
 					<td>
-						<%= link_to edit_admin_post_path(post), :class => 'btn btn-default btn-sm' do %>
+						<%= link_to edit_admin_post_path(post), :class => 'btn btn-default btn-xs' do %>
 							<i class="fa fa-edit fa-lg"></i> Edit
 						<% end %>
-						<%= link_to admin_post_url(post), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' do %>
+						<%= link_to admin_post_url(post), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-xs' do %>
 							<i class="fa fa-trash-o fa-lg"></i> Delete
 						<% end %>
 					</td>
