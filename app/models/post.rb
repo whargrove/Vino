@@ -10,6 +10,10 @@ class Post < ActiveRecord::Base
   validates :link_url, presence: { if: :link }
   validate :link_url_format_valid?, if: :link
 
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
+
   public
 
   def draft?
