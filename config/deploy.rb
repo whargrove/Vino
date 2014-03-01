@@ -32,7 +32,15 @@ namespace :deploy do
   	system "curl --silent #{fetch(:ping_url)}"
   end
 
+  desc 'Restart application'
+  task :create_release_file do
+    on roles(:app) do
+      execute %{echo "#{revision_log_message}" > #{release_path.join('release.txt')}}
+    end
+  end
+
   after :finishing, 'deploy:ping'
   after :finishing, 'deploy:cleanup'
+  after :finished, 'deploy:create_release_file'
 
 end
