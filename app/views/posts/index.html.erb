@@ -24,7 +24,11 @@
   		<% # Convert Post.content to sanitized HTML %>
   		<%= sanitize RedCloth.new(p.content).to_html %>
 		<% end %>
-		<small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.created_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
+    <% if p.published %>
+      <small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.published_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
+    <% else %>
+      <small class="text-muted"><%= link_to '&infin;'.html_safe, p %></small>
+    <% end %>
 	</article>
 
 	<% unless ( i + 1 ) == @posts.length %>

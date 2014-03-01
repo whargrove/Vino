@@ -4,7 +4,7 @@ class Admin::PostsController < ApplicationController
 
   # GET admin/posts
   def index
-    @posts = Post.order('created_at DESC')
+    @posts = Post.order('published_at DESC')
     Time.zone = 'Pacific Time (US & Canada)'
   end
 
@@ -17,7 +17,7 @@ class Admin::PostsController < ApplicationController
   def new
     @post = Post.new
 
-    # Use hipsterjesus.com API to get placeholder text for posts/new text area >_>
+    # Use hipsterjesus.com API to get placeholder text for posts/new text area ^_^
     require 'net/http'
     uri = URI('http://hipsterjesus.com/api/')
     params = { :paras => 1, :type => 'hipster-centric', :html => false }

@@ -38,7 +38,7 @@
 	        <% end %>
 					<td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
 					<td><% if !post.draft? %>
-								<%= post.created_at.in_time_zone.strftime('%I:%M %p %m/%d/%Y') %>
+								<%= post.published_at.in_time_zone.strftime('%I:%M %p %m/%d/%Y') %>
 							<% end %></td>
 					<td>
 						<%= link_to edit_admin_post_path(post), :class => 'btn btn-default btn-xs' do %>
