@@ -18,8 +18,8 @@
 # Ignore database.yml for security
 /config/database.yml
 
-# Ignore application.yml for protecting secrets
-/config/application.yml
+# Ignore secrets.yml for protecting secrets
+/config/secrets.yml
 
 # Ignore public/assets
 /public/assets/

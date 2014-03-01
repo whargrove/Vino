@@ -6,7 +6,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :info
 set :pty, true
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :ping_url, "http://weshargrove.com/ping"
 set :rbenv_type, :user
@@ -32,7 +32,7 @@ namespace :deploy do
   	system "curl --silent #{fetch(:ping_url)}"
   end
 
-  desc 'Restart application'
+  desc 'Create releast.txt file in public directory'
   task :create_release_file do
     on roles(:app) do
       execute %{echo "#{revision_log_message}" > #{release_path.join('public/release.txt')}}
