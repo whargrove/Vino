@@ -5,10 +5,10 @@ class PostsController < ApplicationController
   def index
     if current_user
       # Get the 5 most recent posts
-      @posts = Post.page(params[:page]).order('created_at DESC')
+      @posts = Post.page(params[:page]).order('published_at DESC')
     else
       # Get the 5 most recent posts that are published
-      @posts = Post.page(params[:page]).order('created_at DESC').where({ published: true })
+      @posts = Post.page(params[:page]).order('published_at DESC').where({ published: true })
     end
 
     # Set the time zone
