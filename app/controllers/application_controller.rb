@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
   def authorize_registration
     if Rails.env.production?
-      if request.remote_ip == CONFIG[:ip_address]
+      if request.remote_ip == Rails.application.secrets.ip_address
         return true 
       else
         redirect_to root_url, alert: "Not authorized"
