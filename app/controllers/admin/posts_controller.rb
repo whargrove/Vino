@@ -42,6 +42,7 @@ class Admin::PostsController < ApplicationController
     if params[:commit] == 'Save'
       @post.published = false
     elsif params[:commit] == 'Publish'
+      @post.published_at = DateTime.now.utc
       @post.published = true
     end
 
@@ -58,6 +59,7 @@ class Admin::PostsController < ApplicationController
     if params[:commit] == 'Save'
       @post.published = false
     elsif params[:commit] == 'Publish'
+      @post.published_at = DateTime.now.utc
       @post.published = true
     end
 
