@@ -35,7 +35,7 @@ namespace :deploy do
   desc 'Restart application'
   task :create_release_file do
     on roles(:app) do
-      execute %{echo "#{revision_log_message}" > #{release_path.join('release.txt')}}
+      execute %{echo "#{revision_log_message}" > #{release_path.join('public/release.txt')}}
     end
   end
 
