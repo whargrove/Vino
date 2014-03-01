@@ -11,6 +11,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :ping_url, "http://weshargrove.com/ping"
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.0'
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :keep_releases, 5
 
 namespace :deploy do
