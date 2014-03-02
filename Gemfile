@@ -41,6 +41,9 @@ gem 'friendly_id', '~> 5.0.0'
 # Use will_paginate-bootstrap to paginate on Posts#index
 gem 'will_paginate-bootstrap'
 
+# Use whenever to publish posts
+gem 'whenever'
+
 # Use rspec-rails for testing
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
