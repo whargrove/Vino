@@ -1,19 +1,12 @@
+<% if flash[:alert] %>
+	<div class="alert alert-danger">
+		<%= flash[:alert] %>. Please try again.
+	</div>
+<% end %>
+<h2 id="login_text">Please log in</h2>
 <%= form_tag sessions_path do %>
   <form role="form">
-  	<div class="row" style="margin-top:20px">
-  	<% if flash[:alert] %>
-			<div class="col-sm-6 col-sm-offset-3">
-				<div class="alert alert-danger alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<%= flash[:alert] %>. Please try again.
-				</div>
-			</div>
-		<% end %>
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<h2>Please log in</h2>
-				</div>
-			</div>		
+  	<div class="row">
 		  <div class="col-sm-6 col-sm-offset-3 form-group">
 		    <%= label_tag :user_name, :user_name, :class => 'sr-only' %>
 			  <%= text_field_tag :user_name, params[:user_name], :placeholder => 'User name', :class => 'form-control input-lg' %>
