@@ -1,6 +1,7 @@
 class Admin::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :new, :edit, :create, :update, :destroy]
+  layout 'admin'
 
   # GET admin/posts
   def index
