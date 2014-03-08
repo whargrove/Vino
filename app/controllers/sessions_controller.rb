@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout 'login'
+
   def new
     if current_user.nil?
       render 'new'
