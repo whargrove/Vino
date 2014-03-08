@@ -3,11 +3,11 @@
 		<%= flash[:alert] %>. Please try again.
 	</div>
 <% end %>
-<h2 id="login_text">Please log in</h2>
 <%= form_tag sessions_path do %>
   <form role="form">
   	<div class="row">
 		  <div class="col-sm-6 col-sm-offset-3 form-group">
+			  <h2 id="login_text">Please log in</h2>
 		    <%= label_tag :user_name, :user_name, :class => 'sr-only' %>
 			  <%= text_field_tag :user_name, params[:user_name], :placeholder => 'User name', :class => 'form-control input-lg' %>
 		  </div>
