@@ -6,7 +6,7 @@ gem 'rails', '4.1.0.rc1'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -20,6 +20,9 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# Use V8 JavaScript interpreter
+gem 'therubyracer'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
@@ -30,7 +33,7 @@ gem 'bcrypt-ruby'
 gem 'RedCloth'
 
 # Use bootstrap-sass
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass'
 
 # Use StatHat to track statistics
 gem 'stathat'
