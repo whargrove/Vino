@@ -4,8 +4,9 @@ namespace :posts do
   task :publish_drafts => :environment do
     posts = Post.where("published = false")
     posts.each do |p|
-      if p.published_at
-        p.published = true if p.published_at <= Time.now
+      if p.published_at && p.published_at <= Time.now.utc
+        p.published = true
+        p.save!
       end
     end
   end
