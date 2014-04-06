@@ -4,11 +4,11 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
-# Include rbenv tasks 
-require 'capistrano/rbenv'
-
 # Include bundler tasks
 require 'capistrano/bundler'
+
+# Include rbenv tasks
+require 'capistrano/rbenv'
 
 # Include rails tasks
 require 'capistrano/rails'
