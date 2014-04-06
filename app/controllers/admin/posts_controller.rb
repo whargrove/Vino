@@ -74,6 +74,7 @@ class Admin::PostsController < ApplicationController
     def save_or_publish(post)
       if params[:commit] == 'Save'
         post.published = false
+        post.published_at = DateTime.parse(params[:published_at]).utc if params[:published_at]
       elsif params[:commit] == 'Publish'
         post.published_at = DateTime.now.utc
         post.published = true
@@ -82,6 +83,6 @@ class Admin::PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :published)
+      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :published, :published_at)
     end
 end
