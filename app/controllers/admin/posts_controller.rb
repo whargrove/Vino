@@ -38,14 +38,7 @@ class Admin::PostsController < ApplicationController
   # POST admin/posts
   def create
     @post = Post.new(post_params)
-
-    # Save as draft or publish the post
-    if params[:commit] == 'Save'
-      @post.published = false
-    elsif params[:commit] == 'Publish'
-      @post.published_at = DateTime.now.utc
-      @post.published = true
-    end
+    save_or_publish(@post)
 
     if @post.save
       redirect_to admin_posts_url, notice: "Post was created."
@@ -56,13 +49,7 @@ class Admin::PostsController < ApplicationController
 
   # PATCH/PUT admin/posts/:id
   def update
-    # Save as draft or publish the post
-    if params[:commit] == 'Save'
-      @post.published = false
-    elsif params[:commit] == 'Publish'
-      @post.published_at = DateTime.now.utc
-      @post.published = true
-    end
+    save_or_publish(@post)
 
     if @post.update(post_params)
       redirect_to admin_posts_url, notice: "Post was updated."
@@ -84,8 +71,19 @@ class Admin::PostsController < ApplicationController
       @post = Post.friendly.find(params[:id])
     end
 
+    # Save or publish the post
+    def save_or_publish(post)
+      if params[:commit] == 'Save'
+        post.published = false
+        post.published_at = DateTime.parse(params[:published_at]).utc if params[:published_at]
+      elsif params[:commit] == 'Publish'
+        post.published_at = DateTime.now.utc
+        post.published = true
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :published)
+      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :published, :published_at)
     end
 end
