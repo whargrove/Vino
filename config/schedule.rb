@@ -1,5 +1,5 @@
-set :output, "/log/publisher.log"
+set :output, "log/publisher.log"
 
-every 1.hours do
-  rake "posts:publish_draft"
+every 1.hour do
+  rake "posts:publish_drafts"
 end

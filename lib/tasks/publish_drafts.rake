@@ -7,6 +7,7 @@ namespace :posts do
       if p.published_at && p.published_at <= Time.now.utc
         p.published = true
         p.save!
+        puts "#{p.title} was published at #{p.published_at}."
       end
     end
   end
