@@ -1,6 +1,10 @@
 <% if flash[:alert] %>
-	<div class="alert alert-danger">
-		<%= flash[:alert] %>. Please try again.
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="alert alert-danger">
+				<%= flash[:alert] %>. Please try again.
+			</div>
+		</div>
 	</div>
 <% end %>
 <%= form_tag sessions_path do %>
