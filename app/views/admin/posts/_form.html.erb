@@ -39,14 +39,18 @@
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <% if @post.published? %>
+      <% if @post.published? %>
         <%= f.submit 'Update', :class => 'btn btn-default' %>
-        <% else %>
-        <%= f.submit 'Save', :class => 'btn btn-default' %>
-        <%= f.submit 'Publish', :class => 'btn btn-default' %>
-        <%= datetime_local_field("post", "published_at") %>
-        <% end %>
       </div>
+      <% else %>
+        <%= f.submit "Save", :class => "btn btn-default" %>
+        <%= f.submit "Save & Publish", :class => "btn btn-default" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :published_at, "Schedule post" %>
+        <%= datetime_local_field("post", "published_at", :placeholder => DateTime.now.beginning_of_hour + 1.hour, :min => DateTime.now.beginning_of_hour + 1.hour, :class => "form-control") %>
+      </div>
+      <% end %>
     </div>
     <%= f.hidden_field :user_id, :value => session[:user_id] %>
 	</form>
