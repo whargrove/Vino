@@ -30,17 +30,24 @@ describe Post do
     end
   end
 
-  context 'published is false' do
+  context 'status is draft' do
     it 'is a draft' do
-      post = Post.new(published: false)
+      post = Post.new(status: "draft")
       expect(post.draft?).to be_true
     end
   end
 
-  context 'published is true' do
-    it 'is not a draft' do
-      post = Post.new(published: true)
-      expect(post.draft?).to be_false
+  context 'status is scheduled' do
+    it 'is scheduled to be published' do
+      post = Post.new(status: "scheduled", published_at: DateTime.now.utc + 1.hour)
+      expect(post.scheduled?).to be_true
+    end
+  end
+
+  context 'status is published' do
+    it 'is is published' do
+      post = Post.new(status: "published")
+      expect(post.published?).to be_true
     end
   end
 end

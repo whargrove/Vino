@@ -110,19 +110,39 @@ describe Admin::PostsController do
           expect(response).to redirect_to admin_posts_url
         end
 
-        context 'published is false' do
-          it 'saves as draft' do
+        context 'status is draft' do
+          it 'is not published' do
             post :create, post: attributes_for(:draft_post)
-            post = Post.find_by title: 'draft post'
-            post.published.should_not be_true
+            post = Post.find_by title: 'post'
+            post.status.should equal("draft")
+          end
+
+          it 'is not scheduled to be published' do
+            post :create, post: attributes_for(:draft_post)
+            post = Post.find_by title: 'post'
+            post.published_at.should_be nil
           end
         end
 
-        context 'published is true' do
-          it 'saves as post' do
-            post :create, post: attributes_for(:post)
+        context 'status is scheduled' do
+          it 'is not published' do
+            post :create, post: attributes_for(:scheduled_post)
             post = Post.find_by title: 'post'
-            post.published.should be_true
+            post.status.should equal("scheduled")
+          end
+
+          it 'is scheduled to be published' do
+            post :create, post: attributes_for(:scheduled_post)
+            post = Post.find_by title: 'post'
+            post.published_at.should > DateTime.now.utc
+          end
+        end
+
+        context 'status is published' do
+          it 'is published' do
+            post :create, post: attributes_for(:published_post)
+            post = Post.find_by title: 'post'
+            post.status.should equal("published")
           end
         end
       end
