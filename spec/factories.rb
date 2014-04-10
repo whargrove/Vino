@@ -21,16 +21,7 @@ FactoryGirl.define do
     user_id 1
     link true
     link_url 'http://www.weshargrove.com/'
-    published true
-
-    factory :draft_post do
-      title 'draft post'
-      content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
-      user_id 1
-      link true
-      link_url 'http://www.weshargrove.com/'
-      published false
-    end
+    status 2
 
     factory :invalid_post do
       title ''
@@ -38,7 +29,34 @@ FactoryGirl.define do
       user_id nil
       link true
       link_url ''
-      published true
+      status 2
+    end
+
+    factory :draft_post do
+      title 'draft post'
+      content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
+      user_id 1
+      link true
+      link_url 'http://www.weshargrove.com/'
+      status 0
+    end
+
+    factory :scheduled_post do
+      title 'draft post'
+      content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
+      user_id 1
+      link true
+      link_url 'http://www.weshargrove.com/'
+      status 1
+    end
+
+    factory :published_post do
+      title 'draft post'
+      content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
+      user_id 1
+      link true
+      link_url 'http://www.weshargrove.com/'
+      status 2
     end
   end
 end
