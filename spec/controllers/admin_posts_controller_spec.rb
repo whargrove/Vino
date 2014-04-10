@@ -198,19 +198,47 @@ describe Admin::PostsController do
           expect(response).to redirect_to admin_posts_url
         end
 
-        context 'published is false' do
-          it 'saves as draft' do
+        context 'status is draft' do
+          it 'updates an existing draft' do
             patch :update, id: @post, post: attributes_for(:draft_post)
             post = Post.find_by title: 'draft post'
-            post.published.should_not be_true
+            post.draft?.should be_true
+          end
+
+          it 'is updated and scheduled to be published' do
+            @draft_post = create(:draft_post)
+            patch :update, id: @draft_post, post: attributes_for(:scheduled_post)
+            post = Post.find_by title: 'scheduled post'
+            post.scheduled?.should be_true
+          end
+
+          it 'is updated and published' do
+            @draft_post = create(:draft_post)
+            patch :update, id: @draft_post, post: attributes_for(:published_post)
+            post = Post.find_by title: 'published_post'
+            post.published?.should be_true
           end
         end
 
-        context 'published is true' do
-          it 'saves as post' do
+        context 'status is scheduled' do
+          it 'it updates an existing scheduled post' do
+            pending("Not yet implemented")
+          end
+
+          it 'is updated and rescheduled to be published' do
+            pending("Not yet implemented")
+          end
+
+          it 'is updated and published' do
+            pending("Not yet implemented")
+          end
+        end
+
+        context 'status is published' do
+          it 'is updated and remains published' do
             patch :update, id: @post, post: attributes_for(:post)
             post = Post.find_by title: 'post'
-            post.published.should be_true
+            post.published?.should be_true
           end
         end
       end
