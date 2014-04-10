@@ -42,7 +42,7 @@ FactoryGirl.define do
     end
 
     factory :scheduled_post do
-      title 'draft post'
+      title 'scheduled post'
       content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
       user_id 1
       link true
@@ -51,7 +51,7 @@ FactoryGirl.define do
     end
 
     factory :published_post do
-      title 'draft post'
+      title 'published post'
       content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, perferendis pariatur perspiciatis saepe distinctio earum itaque. Odit, inventore, doloremque dolor magnam ex officiis accusantium dicta voluptas cumque ratione soluta quaerat!'
       user_id 1
       link true
