@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if current_user
       @posts = Post.page(params[:page]).order('published_at DESC')
     else
-      @posts = Post.page(params[:page]).order('published_at DESC').where("status <> ?", Post.statuses[:published])
+      @posts = Post.page(params[:page]).where("status = ?", Post.statuses[:published]).order('published_at DESC')
     end
 
     # Set the time zone
