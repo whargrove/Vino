@@ -7,8 +7,8 @@ atom_feed do |feed|
 			entry.title post.title
 			entry.content RedCloth.new(post.content).to_html, type: 'html'
 			entry.author do |author|
-				author.name User.find(post.user_id).first_name + " " + User.find(post.user_id).last_name				
-			end			
+				author.name User.find(post.user_id).first_name + " " + User.find(post.user_id).last_name
+			end
 		end
 	end
 end
