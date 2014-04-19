@@ -14,6 +14,8 @@ class Post < ActiveRecord::Base
   # will_paginate number of posts per page
   self.per_page = 5
 
+  enum status: { draft: 0, scheduled: 1, published: 2 }
+
   def should_generate_new_friendly_id?
     title_changed?
   end
