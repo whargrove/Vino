@@ -4,11 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     if current_user
-      # Get the 5 most recent posts
       @posts = Post.page(params[:page]).order('published_at DESC')
     else
-      # Get the 5 most recent posts that are published
-      @posts = Post.page(params[:page]).order('published_at DESC').where({ published: true })
+      @posts = Post.page(params[:page]).order('published_at DESC').where("status <> ?", Post.statuses[:published])
     end
 
     # Set the time zone
