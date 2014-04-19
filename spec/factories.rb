@@ -21,7 +21,7 @@ FactoryGirl.define do
     user_id 1
     link true
     link_url 'http://www.weshargrove.com/'
-    status 2
+    status "published"
     published_at DateTime.now.utc - 1.hour
 
     factory :invalid_post do
@@ -30,7 +30,7 @@ FactoryGirl.define do
       user_id nil
       link true
       link_url ''
-      status 2
+      status "published"
       published_at nil
     end
 
@@ -40,7 +40,7 @@ FactoryGirl.define do
       user_id 1
       link true
       link_url 'http://www.weshargrove.com/'
-      status 0
+      status "draft"
       published_at nil
     end
 
@@ -50,7 +50,7 @@ FactoryGirl.define do
       user_id 1
       link true
       link_url 'http://www.weshargrove.com/'
-      status 1
+      status "scheduled"
       published_at DateTime.now.utc + 1.hour
     end
 
@@ -60,7 +60,7 @@ FactoryGirl.define do
       user_id 1
       link true
       link_url 'http://www.weshargrove.com/'
-      status 2
+      status "published"
       published_at DateTime.now.utc - 1.hour
     end
   end
