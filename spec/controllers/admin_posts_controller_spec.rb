@@ -113,22 +113,22 @@ describe Admin::PostsController do
         context 'status is draft' do
           it 'is not published' do
             post :create, post: attributes_for(:draft_post)
-            post = Post.find_by title: 'post'
-            post.status.should equal("draft")
+            post = Post.find_by title: 'draft post'
+            post.draft?.should be_true
           end
 
           it 'is not scheduled to be published' do
             post :create, post: attributes_for(:draft_post)
-            post = Post.find_by title: 'post'
-            post.published_at.should_be nil
+            post = Post.find_by title: 'draft post'
+            post.published_at.should be_nil
           end
         end
 
         context 'status is scheduled' do
           it 'is not published' do
             post :create, post: attributes_for(:scheduled_post)
-            post = Post.find_by title: 'post'
-            post.status.should equal("scheduled")
+            post = Post.find_by title: 'scheduled post'
+            post.scheduled?.should be_true
           end
 
           it 'is scheduled to be published' do
@@ -142,7 +142,7 @@ describe Admin::PostsController do
           it 'is published' do
             post :create, post: attributes_for(:published_post)
             post = Post.find_by title: 'post'
-            post.status.should equal("published")
+            post.published?.should be_true
           end
         end
       end
@@ -163,11 +163,12 @@ describe Admin::PostsController do
   end
 
   describe 'PATCH #update' do
-    before :each do
-      @post = create(:post)
-    end
 
     context 'user not logged in' do
+      before :each do
+        @post = create(:post)
+      end
+
       it 'redirects to /login' do
         patch :update, :id => @post.id
         expect(response).to redirect_to('/login')
@@ -178,9 +179,14 @@ describe Admin::PostsController do
       before :each do
         user = create(:user)
         session[:user_id] = user.id
+        @post = create(:post)
       end
 
       context 'with valid attributes' do
+        before :each do
+          @post = create(:post)
+        end
+
         it 'assigns requested post to @post' do
           patch :update, id: @post, post: attributes_for(:post)
           expect(assigns(:post)).to eq(@post)
@@ -199,21 +205,24 @@ describe Admin::PostsController do
         end
 
         context 'status is draft' do
+          before :each do
+            @draft_post = create(:draft_post)
+          end
+
           it 'updates an existing draft' do
-            patch :update, id: @post, post: attributes_for(:draft_post)
+            patch :update, id: @draft_post, post: attributes_for(:draft_post, content: 'Foo')
             post = Post.find_by title: 'draft post'
+            post.content.should eq('Foo')
             post.draft?.should be_true
           end
 
           it 'is updated and scheduled to be published' do
-            @draft_post = create(:draft_post)
             patch :update, id: @draft_post, post: attributes_for(:scheduled_post)
             post = Post.find_by title: 'scheduled post'
             post.scheduled?.should be_true
           end
 
           it 'is updated and published' do
-            @draft_post = create(:draft_post)
             patch :update, id: @draft_post, post: attributes_for(:published_post)
             post = Post.find_by title: 'published_post'
             post.published?.should be_true
@@ -221,29 +230,51 @@ describe Admin::PostsController do
         end
 
         context 'status is scheduled' do
+          before :each do
+            @scheduled_post = create(:scheduled_post)
+          end
+
           it 'it updates an existing scheduled post' do
-            pending("Not yet implemented")
+            patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, content: 'Foo')
+            post = Post.find_by title: 'scheduled post'
+            post.content.should eq('Foo')
+            post.scheduled?.should be_true
           end
 
           it 'is updated and rescheduled to be published' do
-            pending("Not yet implemented")
+            original_time = @scheduled_post.published_at
+            patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: DateTime.now.utc + 1.day)
+            post = Post.find_by title: 'scheduled post'
+            post.published_at.should > original_time
+            post.scheduled?.should be_true
           end
 
           it 'is updated and published' do
-            pending("Not yet implemented")
+            patch :update, id: @scheduled_post, post: attributes_for(:published_post)
+            post = Post.find_by title: 'published post'
+            post.published?.should be_true
           end
         end
 
         context 'status is published' do
+          before :each do
+            @published_post = create(:published_post)
+          end
+
           it 'is updated and remains published' do
-            patch :update, id: @post, post: attributes_for(:post)
-            post = Post.find_by title: 'post'
+            patch :update, id: @published_post, post: attributes_for(:published_post, content: 'New content')
+            post = Post.find_by title: 'published post'
+            post.content.should eq('New content')
             post.published?.should be_true
           end
         end
       end
 
       context 'without valid attributes' do
+        before :each do
+          @post = create(:post)
+        end
+
         it 'does not change post attributes' do
           patch :update, id: @post, post: attributes_for(:invalid_post)
           @post.reload
