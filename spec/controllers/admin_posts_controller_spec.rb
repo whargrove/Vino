@@ -133,7 +133,7 @@ describe Admin::PostsController do
 
           it 'is scheduled to be published' do
             post :create, post: attributes_for(:scheduled_post)
-            post = Post.find_by title: 'post'
+            post = Post.find_by title: 'scheduled post'
             post.published_at.should > DateTime.now.utc
           end
         end
@@ -141,7 +141,7 @@ describe Admin::PostsController do
         context 'status is published' do
           it 'is published' do
             post :create, post: attributes_for(:published_post)
-            post = Post.find_by title: 'post'
+            post = Post.find_by title: 'published post'
             post.published?.should be_true
           end
         end
@@ -165,11 +165,8 @@ describe Admin::PostsController do
   describe 'PATCH #update' do
 
     context 'user not logged in' do
-      before :each do
-        @post = create(:post)
-      end
-
       it 'redirects to /login' do
+        @post = create(:post)
         patch :update, :id => @post.id
         expect(response).to redirect_to('/login')
       end
@@ -183,10 +180,6 @@ describe Admin::PostsController do
       end
 
       context 'with valid attributes' do
-        before :each do
-          @post = create(:post)
-        end
-
         it 'assigns requested post to @post' do
           patch :update, id: @post, post: attributes_for(:post)
           expect(assigns(:post)).to eq(@post)
@@ -224,7 +217,7 @@ describe Admin::PostsController do
 
           it 'is updated and published' do
             patch :update, id: @draft_post, post: attributes_for(:published_post)
-            post = Post.find_by title: 'published_post'
+            post = Post.find_by title: 'published post'
             post.published?.should be_true
           end
         end
@@ -271,10 +264,6 @@ describe Admin::PostsController do
       end
 
       context 'without valid attributes' do
-        before :each do
-          @post = create(:post)
-        end
-
         it 'does not change post attributes' do
           patch :update, id: @post, post: attributes_for(:invalid_post)
           @post.reload
