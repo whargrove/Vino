@@ -20,16 +20,6 @@ class Post < ActiveRecord::Base
     title_changed?
   end
 
-  public
-
-  def draft?
-    if !published
-      true
-    else
-      false
-    end
-  end
-
   private
 
   def link_url_format_valid?
