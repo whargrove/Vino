@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title
   validates_presence_of :user_id
   validates :link_url, presence: { if: :link }
+  validates :published_at, presence: { if: :scheduled? }
   validate :link_url_format_valid?, if: :link
 
   # will_paginate number of posts per page

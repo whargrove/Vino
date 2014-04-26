@@ -227,6 +227,13 @@ describe Admin::PostsController do
             @scheduled_post = create(:scheduled_post)
           end
 
+          it 'is still scheduled when published_at is nil' do
+            original_time = @scheduled_post.published_at
+            patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: "")
+            post = Post.find_by title: "scheduled post"
+            post.published_at.should eq(original_time)
+          end
+
           it 'it updates an existing scheduled post' do
             patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, content: 'Foo')
             post = Post.find_by title: 'scheduled post'

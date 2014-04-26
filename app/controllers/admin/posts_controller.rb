@@ -38,7 +38,7 @@ class Admin::PostsController < ApplicationController
   # POST admin/posts
   def create
     @post = Post.new(post_params)
-    save_or_publish(@post)
+    set_status(post_params, @post)
 
     if @post.save
       redirect_to admin_posts_url, notice: "Post was created."
@@ -49,9 +49,7 @@ class Admin::PostsController < ApplicationController
 
   # PATCH/PUT admin/posts/:id
   def update
-    save_or_publish(@post)
-
-    if @post.update(post_params)
+    if @post.update(set_status(post_params, @post))
       redirect_to admin_posts_url, notice: "Post was updated."
     else
       render action: 'edit', error: "Something happened."
@@ -71,19 +69,26 @@ class Admin::PostsController < ApplicationController
       @post = Post.friendly.find(params[:id])
     end
 
-    # Save or publish the post
-    def save_or_publish(post)
-      if params[:commit] == 'Save'
-        post.published = false
-        post.published_at = DateTime.parse(params[:published_at]).utc if params[:published_at]
-      elsif params[:commit] == 'Publish'
-        post.published_at = DateTime.now.utc
-        post.published = true
+    # Set the status for the post
+    def set_status(post_params, post)
+      case params[:commit]
+      when 'Save'
+        if post_params['published_at'].empty?
+          post.draft!
+        else
+          # Must set published_at here otherwise post validation will fail
+          post.published_at = post_params['published_at']
+          post.scheduled!
+        end
+      when 'Save & Publish'
+        post_params['published_at'] = Time.now.utc
+        post.published!
       end
+      return post_params
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :published, :published_at)
+      params.require(:post).permit(:title, :content, :user_id, :link, :link_url, :status, :published_at)
     end
 end
