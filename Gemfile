@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0.rc1'
+gem 'rails', '4.1.0'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg'
