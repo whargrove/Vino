@@ -7,27 +7,36 @@
 <% @posts.each_with_index do |p, i| %>
 	<article>
 		<% if p.link %>
-  		<% if p.draft? %>
-    		<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
-  		<% else %>
-    		<h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
-  		<% end %>
+      <% case p.status %>
+      <% when 'draft' %>
+        <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+      <% when 'scheduled' %>
+        <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Scheduled</span></small></h2>
+      <% when 'published' %>
+        <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
+      <% end %>
 		<% else %>
-  		<% if p.draft? %>
-    		<h2><%= p.title %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
-  		<% else %>
-    		<h2><%= p.title %></h2>
-  		<% end %>
+      <% case p.status %>
+      <% when 'draft' %>
+        <h2><%= p.title %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+      <% when 'scheduled' %>
+        <h2><%= p.title %>&nbsp;<small><span class="label label-default">Scheduled</span></small></h2>
+      <% when 'published' %>
+        <h2><%= p.title %></h2>
+      <% end %>
 		<% end %>
 		<% # Check if Post.content exists otherwise RedCloth will raise TypeError %>
 		<% if p.content %>
   		<% # Convert Post.content to sanitized HTML %>
   		<%= sanitize RedCloth.new(p.content).to_html %>
 		<% end %>
-    <% if p.published? %>
-      <small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.published_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
-    <% else %>
+    <% case p.status %>
+    <% when 'draft' %>
       <small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Saved by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.updated_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
+    <% when 'scheduled' %>
+      <small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Saved by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.updated_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %> | Publish at <%= p.published_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
+    <% when 'published' %>
+      <small class="text-muted"><%= link_to '&infin;'.html_safe, p %> | Posted by <%= p.user_id ? User.find(p.user_id).first_name : 'a ghost' %> at <%= p.published_at.in_time_zone.strftime('%Y-%m-%d %l:%M:%S %p') %></small>
     <% end %>
 	</article>
 
