@@ -26,11 +26,18 @@
 	  <tbody>
 	    <% @posts.each do |post| %>
 	      <tr>
-	        <td><% if post.draft? %>
-				        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default">Draft</span>
-			        <% else %>
-			        	<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
-		        	<% end %></td>
+	        <td>
+	        	<% case post.status %>
+      			<% when 'draft' %>
+			        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default">Draft</span>
+		        <% when 'scheduled' %>
+			        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default">Scheduled</span>
+		        <% when 'published' %>
+		        	<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
+	        	<% else %>
+		        	<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
+	        	<% end %>
+        	</td>
 	        <% if post.link %>
 		      <td><span class="glyphicon glyphicon-link"></span></td>
 	        <% else %>
