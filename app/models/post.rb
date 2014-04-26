@@ -9,23 +9,16 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title
   validates_presence_of :user_id
   validates :link_url, presence: { if: :link }
+  validates :published_at, presence: { if: :scheduled? }
   validate :link_url_format_valid?, if: :link
 
   # will_paginate number of posts per page
   self.per_page = 5
 
+  enum status: { draft: 0, scheduled: 1, published: 2 }
+
   def should_generate_new_friendly_id?
     title_changed?
-  end
-
-  public
-
-  def draft?
-    if !published
-      true
-    else
-      false
-    end
   end
 
   private
