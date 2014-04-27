@@ -29,9 +29,9 @@
 	        <td>
 	        	<% case post.status %>
       			<% when 'draft' %>
-			        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default">Draft</span>
+			        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Draft</span>
 		        <% when 'scheduled' %>
-			        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default">Scheduled</span>
+			        <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Scheduled</span>
 		        <% when 'published' %>
 		        	<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
 	        	<% else %>
