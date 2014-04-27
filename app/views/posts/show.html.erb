@@ -1,13 +1,19 @@
 <% if @post.link %>
-  <% if @post.draft? %>
+  <% case @post.status %>
+  <% when 'draft' %>
     <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + @post.title, @post.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
-  <% else %>
+  <% when 'scheduled' %>
+    <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + @post.title, @post.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+  <% when 'published' %>
     <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + @post.title, @post.link_url %></h2>
   <% end %>
 <% else %>
-  <% if @post.draft? %>
+  <% case @post.status %>
+  <% when 'draft' %>
     <h2><%= @post.title %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
-  <% else %>
+  <% when 'scheduled' %>
+    <h2><%= @post.title %>&nbsp;<small><span class="label label-default">Scheduled</span></small></h2>
+  <% when 'published' %>
     <h2><%= @post.title %></h2>
   <% end %>
 <% end %>
@@ -16,4 +22,3 @@
   <% # Convert Post.content to sanitized HTML %>
   <%= sanitize RedCloth.new(@post.content).to_html %>
 <% end %>
-
