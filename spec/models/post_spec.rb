@@ -25,6 +25,12 @@ describe Post do
     expect(post).to_not be_valid
   end
 
+  it 'is invalid without published_at if published' do
+    post = create(:published_post)
+    post.published_at = nil
+    expect(post).to_not be_valid
+  end
+
   context 'link is true' do
     it 'is invalid without a link_url' do
       expect(Post.new(link: true, link_url: nil)).to have(2).errors_on(:link_url)

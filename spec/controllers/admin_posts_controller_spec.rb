@@ -216,9 +216,10 @@ describe Admin::PostsController do
           end
 
           it 'is updated and published' do
-            patch :update, id: @draft_post, post: attributes_for(:published_post)
-            post = Post.find_by title: 'published post'
+            patch :update, id: @draft_post, post: {status: 'published', published_at: Time.now.utc}
+            post = Post.find_by title: 'draft post'
             post.published?.should be_true
+            post.published_at.past?.should be_true
           end
         end
 
