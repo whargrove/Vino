@@ -50,6 +50,10 @@ class Admin::PostsController < ApplicationController
   # PATCH/PUT admin/posts/:id
   def update
     if @post.update(set_status(post_params, @post))
+      if @post.published? && @post.published_at.nil?
+        @post.published_at = Time.now.utc
+        @post.save!
+      end
       redirect_to admin_posts_url, notice: "Post was updated."
     else
       render action: 'edit', error: "Something happened."
@@ -81,7 +85,11 @@ class Admin::PostsController < ApplicationController
           post.scheduled!
         end
       when 'Save & Publish'
-        post_params['published_at'] = Time.now.utc
+        unless post_params['published_at'].empty?
+          post_params['published_at'] = Time.now.utc
+        else
+          post.published_at = Time.now.utc
+        end
         post.published!
       end
       return post_params
