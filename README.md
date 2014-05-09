@@ -1,4 +1,4 @@
-# Vino
+# Vino [![Build Status](https://travis-ci.org/whargrove/Vino.svg?branch=master)](https://travis-ci.org/whargrove/Vino)
 
 Vino is the very simple blog engine behind weshargrove.com.
 
