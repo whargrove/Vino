@@ -44,6 +44,9 @@ gem 'will_paginate-bootstrap'
 # Use whenever to publish posts
 gem 'whenever'
 
+# Use codeclimate for code coverage
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 # Use rspec-rails for testing
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
