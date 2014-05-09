@@ -4,6 +4,7 @@ Vino is the very simple blog engine behind weshargrove.com.
 
 [![Build Status](https://travis-ci.org/whargrove/Vino.svg?branch=master)](https://travis-ci.org/whargrove/Vino)
 [![Code Climate](https://codeclimate.com/github/whargrove/Vino.png)](https://codeclimate.com/github/whargrove/Vino)
+[![Code Climate](https://codeclimate.com/github/whargrove/Vino/coverage.png)](https://codeclimate.com/github/whargrove/Vino)
 
 ## Setup
 
