@@ -229,10 +229,15 @@ describe Admin::PostsController do
           end
 
           it 'is still scheduled when published_at is nil' do
-            original_time = @scheduled_post.published_at
-            patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: "")
+            patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: nil)
             post = Post.find_by title: "scheduled post"
-            post.published_at.should eq(original_time)
+            post.scheduled?.should be_true
+          end
+
+          it 'preserves published_at when published_at is nil from update' do
+            patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: nil)
+            post = Post.find_by title: "scheduled post"
+            post.published_at.should_not be_nil
           end
 
           it 'it updates an existing scheduled post' do
