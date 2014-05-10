@@ -44,6 +44,9 @@ gem 'will_paginate-bootstrap'
 # Use whenever to publish posts
 gem 'whenever'
 
+# Social media gems to extend posts
+gem 'twitter'
+
 # Use codeclimate for code coverage
 gem "codeclimate-test-reporter", group: :test, require: nil
 
