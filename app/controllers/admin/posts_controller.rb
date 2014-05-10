@@ -86,7 +86,7 @@ class Admin::PostsController < ApplicationController
         url = "http://www.weshargrove.com/posts/" + post.slug
 
         # Create the status
-        status = "#{post.title} #{url}"
+        status = "New post: \"#{post.title}\" #{url}"
 
         # Update the status
         client.update(status)
