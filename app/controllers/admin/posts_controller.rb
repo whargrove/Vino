@@ -55,6 +55,7 @@ class Admin::PostsController < ApplicationController
     if @post.update(set_status(post_params, @post))
       if @post.published? && @post.published_at.nil?
         @post.published_at = Time.now.utc
+        post_to_twitter(@post)
         @post.save!
       end
       redirect_to admin_posts_url, notice: "Post was updated."
