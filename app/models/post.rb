@@ -21,6 +21,30 @@ class Post < ActiveRecord::Base
     title_changed?
   end
 
+  def tweet
+    # Only post to twitter if this is a production environment
+    unless Rails.env.production?
+      return
+    end
+
+    # First, setup the twitter client
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = Rails.application.secrets.twitter_api_key
+      config.consumer_secret     = Rails.application.secrets.twitter_api_secret
+      config.access_token        = Rails.application.secrets.twitter_access_token
+      config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
+    end
+
+    # Get a URL of the post
+    url = "http://www.weshargrove.com/posts/" + self.slug
+
+    # Create the status
+    status = "New post: \"#{post.title}\" #{url}"
+
+    # Update the status
+    client.update(status)
+  end
+
   private
 
   def link_url_format_valid?
