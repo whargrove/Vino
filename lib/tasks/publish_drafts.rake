@@ -6,6 +6,7 @@ namespace :posts do
     posts.each do |p|
       if p.published_at && p.published_at <= Time.now.utc
         p.published!
+        p.tweet
         puts "#{p.title} was published at #{p.published_at}."
       end
     end
