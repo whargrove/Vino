@@ -39,7 +39,7 @@ class Post < ActiveRecord::Base
     url = "http://www.weshargrove.com/posts/" + self.slug
 
     # Create the status
-    status = "New post: \"#{post.title}\" #{url}"
+    status = "New post: \"#{self.title}\" #{url}"
 
     # Update the status
     client.update(status)
