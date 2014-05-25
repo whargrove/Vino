@@ -55,7 +55,7 @@ class Admin::PostsController < ApplicationController
     if @post.update(set_status(post_params, @post))
       if @post.published?
         @post.published_at = Time.now.utc if @post.published_at.nil?
-        @post.tweet
+        @post.tweet if @post.published_at > 5.seconds.ago
         @post.save!
       end
       redirect_to admin_posts_url, notice: "Post was updated."
