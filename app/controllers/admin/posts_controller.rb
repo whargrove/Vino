@@ -53,8 +53,8 @@ class Admin::PostsController < ApplicationController
   # PATCH/PUT admin/posts/:id
   def update
     if @post.update(set_status(post_params, @post))
-      if @post.published? && @post.published_at.nil?
-        @post.published_at = Time.now.utc
+      if @post.published?
+        @post.published_at = Time.now.utc if @post.published_at.nil?
         @post.tweet
         @post.save!
       end
