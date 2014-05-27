@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '~> 4.1.0'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg'
@@ -55,12 +55,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'fuubar'
+  gem 'spring'
 end
 
 # Development gems
 group :development do
-	gem 'capistrano'
-	gem 'capistrano-rails'
-	gem 'capistrano-rbenv'
-	gem 'capistrano-bundler'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
 end
