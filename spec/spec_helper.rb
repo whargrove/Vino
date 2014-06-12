@@ -46,3 +46,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+# Adding this to skip SSL redirects while testing
+module ActionController::ForceSSL::ClassMethods
+  def force_ssl(options = {})
+    # skip
+  end
+end
