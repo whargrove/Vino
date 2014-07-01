@@ -7,9 +7,13 @@
 <% if current_user %>
   <%= render 'shared/admin_navigation' %>
 <% end %>
-<%= render 'shared/header' %>
 <div class="container">
-  <%= yield %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= render 'shared/header' %>
+      <%= yield %>
+    </div>
+  </div>
 </div>
 <%= render 'shared/footer' %>
 </body>
