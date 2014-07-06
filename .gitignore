@@ -25,4 +25,5 @@
 /public/assets/
 
 # Ignore bins
+/bundle/bin
 /bin
