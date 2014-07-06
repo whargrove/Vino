@@ -149,9 +149,8 @@ describe Admin::PostsController, :type => :controller do
 
       context 'without valid attributes' do
         it 'does not create a new post' do
-          expect {
-            post :create, post: attributes_for(:invalid_post)
-          }.to_not change(Post, :count).by(1)
+          post :create, post: attributes_for(:invalid_post)
+          expect(Post.all).to have(0).posts
         end
 
         it 're-renders #new' do
