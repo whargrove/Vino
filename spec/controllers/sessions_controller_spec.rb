@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionsController do
+describe SessionsController, :type => :controller do
   describe 'GET #new' do
     context 'user not logged in' do
       it 'renders #new (as /login)' do
@@ -31,8 +31,8 @@ describe SessionsController do
       context 'invalid login credentials' do
         it 'does not create a new session' do
           post :create, user_name: @user.user_name, password: 'foo'
-          session[:user_id].should_not eq(@user.id)
-          session[:user_id].should eq(nil)
+          expect(session[:user_id]).not_to eq(@user.id)
+          expect(session[:user_id]).to eq(nil)
         end
         it 'redirects to /login' do
           post :create, user_name: @user.user_name, password: 'foo'
@@ -40,15 +40,15 @@ describe SessionsController do
         end
         it 'has an error message' do
           post :create, user_name: @user.user_name, password: 'foo'
-          flash[:alert].should eq("User name or password is invalid")
+          expect(flash[:alert]).to eq("User name or password is invalid")
         end
       end
 
       context 'using valid login credentials' do
         it 'creates a new session' do
           post :create, user_name: @user.user_name, password: @user.password
-          session[:user_id].should eq(@user.id)
-          session[:user_id].should_not eq(nil)
+          expect(session[:user_id]).to eq(@user.id)
+          expect(session[:user_id]).not_to eq(nil)
         end
 
         it 'redirects to /admin/posts' do
@@ -84,8 +84,8 @@ describe SessionsController do
 
       it 'deletes the session' do
         delete :destroy, id: session[:user_id]
-        session[:user_id].should eq(nil)
-        session[:user_id].should_not eq(@user.id)
+        expect(session[:user_id]).to eq(nil)
+        expect(session[:user_id]).not_to eq(@user.id)
       end
 
       it 'redirects to /' do
