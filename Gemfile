@@ -52,7 +52,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use rspec-rails for testing
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails', '2.99'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'fuubar'
   gem 'spring'
