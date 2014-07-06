@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Post do
+describe Post, :type => :model do
   it 'is valid with a title, content, user_id, link, and link_url' do
     post = create(:post)
     expect(post).to be_valid
@@ -45,21 +45,21 @@ describe Post do
   context 'status is draft' do
     it 'is a draft' do
       post = Post.new(status: 0)
-      expect(post.draft?).to be_true
+      expect(post.draft?).to be_truthy
     end
   end
 
   context 'status is scheduled' do
     it 'is scheduled to be published' do
       post = Post.new(status: 1, published_at: DateTime.now.utc + 1.hour)
-      expect(post.scheduled?).to be_true
+      expect(post.scheduled?).to be_truthy
     end
   end
 
   context 'status is published' do
     it 'is is published' do
       post = Post.new(status: 2)
-      expect(post.published?).to be_true
+      expect(post.published?).to be_truthy
     end
   end
 end

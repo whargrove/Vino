@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::PostsController do
+describe Admin::PostsController, :type => :controller do
   describe 'GET #index' do
     context 'user not logged in' do
       it 'redirects to /login' do
@@ -45,7 +45,7 @@ describe Admin::PostsController do
       it 'assigns a new post to @post' do
         post = create(:post)
         get :new
-        assigns(:post).should be_a_new(Post)
+        expect(assigns(:post)).to be_a_new(Post)
       end
 
       it 'renders #new' do
@@ -114,13 +114,13 @@ describe Admin::PostsController do
           it 'is not published' do
             post :create, post: attributes_for(:draft_post)
             post = Post.find_by title: 'draft post'
-            post.draft?.should be_true
+            expect(post.draft?).to be_truthy
           end
 
           it 'is not scheduled to be published' do
             post :create, post: attributes_for(:draft_post)
             post = Post.find_by title: 'draft post'
-            post.published_at.should be_nil
+            expect(post.published_at).to be_nil
           end
         end
 
@@ -128,13 +128,13 @@ describe Admin::PostsController do
           it 'is not published' do
             post :create, post: attributes_for(:scheduled_post)
             post = Post.find_by title: 'scheduled post'
-            post.scheduled?.should be_true
+            expect(post.scheduled?).to be_truthy
           end
 
           it 'is scheduled to be published' do
             post :create, post: attributes_for(:scheduled_post)
             post = Post.find_by title: 'scheduled post'
-            post.published_at.should > DateTime.now.utc
+            expect(post.published_at).to be > DateTime.now.utc
           end
         end
 
@@ -142,7 +142,7 @@ describe Admin::PostsController do
           it 'is published' do
             post :create, post: attributes_for(:published_post)
             post = Post.find_by title: 'published post'
-            post.published?.should be_true
+            expect(post.published?).to be_truthy
           end
         end
       end
@@ -205,21 +205,21 @@ describe Admin::PostsController do
           it 'updates an existing draft' do
             patch :update, id: @draft_post, post: attributes_for(:draft_post, content: 'Foo')
             post = Post.find_by title: 'draft post'
-            post.content.should eq('Foo')
-            post.draft?.should be_true
+            expect(post.content).to eq('Foo')
+            expect(post.draft?).to be_truthy
           end
 
           it 'is updated and scheduled to be published' do
             patch :update, id: @draft_post, post: attributes_for(:scheduled_post)
             post = Post.find_by title: 'scheduled post'
-            post.scheduled?.should be_true
+            expect(post.scheduled?).to be_truthy
           end
 
           it 'is updated and published' do
             patch :update, id: @draft_post, post: {status: 'published', published_at: Time.now.utc}
             post = Post.find_by title: 'draft post'
-            post.published?.should be_true
-            post.published_at.past?.should be_true
+            expect(post.published?).to be_truthy
+            expect(post.published_at.past?).to be_truthy
           end
         end
 
@@ -231,34 +231,34 @@ describe Admin::PostsController do
           it 'is still scheduled when published_at is nil' do
             patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: nil)
             post = Post.find_by title: "scheduled post"
-            post.scheduled?.should be_true
+            expect(post.scheduled?).to be_truthy
           end
 
           it 'preserves published_at when published_at is nil from update' do
             patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: nil)
             post = Post.find_by title: "scheduled post"
-            post.published_at.should_not be_nil
+            expect(post.published_at).not_to be_nil
           end
 
           it 'it updates an existing scheduled post' do
             patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, content: 'Foo')
             post = Post.find_by title: 'scheduled post'
-            post.content.should eq('Foo')
-            post.scheduled?.should be_true
+            expect(post.content).to eq('Foo')
+            expect(post.scheduled?).to be_truthy
           end
 
           it 'is updated and rescheduled to be published' do
             original_time = @scheduled_post.published_at
             patch :update, id: @scheduled_post, post: attributes_for(:scheduled_post, published_at: DateTime.now.utc + 1.day)
             post = Post.find_by title: 'scheduled post'
-            post.published_at.should > original_time
-            post.scheduled?.should be_true
+            expect(post.published_at).to be > original_time
+            expect(post.scheduled?).to be_truthy
           end
 
           it 'is updated and published' do
             patch :update, id: @scheduled_post, post: attributes_for(:published_post)
             post = Post.find_by title: 'published post'
-            post.published?.should be_true
+            expect(post.published?).to be_truthy
           end
         end
 
@@ -270,8 +270,8 @@ describe Admin::PostsController do
           it 'is updated and remains published' do
             patch :update, id: @published_post, post: attributes_for(:published_post, content: 'New content')
             post = Post.find_by title: 'published post'
-            post.content.should eq('New content')
-            post.published?.should be_true
+            expect(post.content).to eq('New content')
+            expect(post.published?).to be_truthy
           end
         end
       end

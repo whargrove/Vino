@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe UsersController, :type => :controller do
   describe 'GET #new' do
     context 'user not logged in' do
       it 'renders #new' do

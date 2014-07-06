@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PostsController do
+describe PostsController, :type => :controller do
   describe 'GET #index' do
     context 'user not logged in' do
       it 'assigns @posts' do
