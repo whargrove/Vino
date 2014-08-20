@@ -63,15 +63,6 @@ GIT
       sprockets (~> 2.12)
       sprockets-rails (>= 2.0, < 4.0)
 
-GIT
-  remote: https://github.com/thekompanee/fuubar.git
-  revision: 0dcad9ada7d67823cbd167dd1734aaeae778081d
-  branch: master
-  specs:
-    fuubar (2.0.0)
-      rspec (~> 3.0)
-      ruby-progressbar (~> 1.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -123,6 +114,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
+    fuubar (2.0.0)
+      rspec (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (0.2.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -254,7 +248,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails (~> 4.0)
   friendly_id (~> 5.0.0)
-  fuubar!
+  fuubar (~> 2.0.0)
   jbuilder
   jquery-rails
   pg

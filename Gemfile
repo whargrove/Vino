@@ -55,7 +55,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'fuubar', :git => 'https://github.com/thekompanee/fuubar.git', :branch => 'master'
+  gem 'fuubar', '~> 2.0.0'
   gem 'spring'
 end
 
