@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', :git => 'https://github.com/rails/rails.git', :tag => 'v4.2.0.beta1'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -55,7 +55,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'fuubar', :git => 'https://github.com/thekompanee/fuubar.git', :branch => 'master'
+  gem 'fuubar', '~> 2.0.0'
   gem 'spring'
 end
 
