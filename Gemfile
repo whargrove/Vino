@@ -32,9 +32,6 @@ gem 'RedCloth'
 # Use bootstrap-sass
 gem 'bootstrap-sass'
 
-# Use StatHat to track statistics
-gem 'stathat'
-
 # Use friendly_id for user readable URLs and better SEO
 gem 'friendly_id', '~> 5.0.0'
 
@@ -49,6 +46,8 @@ gem 'twitter'
 
 # Use codeclimate for code coverage
 gem "codeclimate-test-reporter", group: :test, require: nil
+
+gem "rack-google-analytics"
 
 # Use rspec-rails for testing
 group :development, :test do
