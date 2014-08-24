@@ -9,11 +9,11 @@
 		<% if p.link %>
       <% case p.status %>
       <% when 'draft' %>
-        <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
+        <h2><%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Draft</span></small></h2>
       <% when 'scheduled' %>
-        <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Scheduled</span></small></h2>
+        <h2><%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %>&nbsp;<small><span class="label label-default">Scheduled</span></small></h2>
       <% when 'published' %>
-        <h2><%= link_to '<span class="glyphicon glyphicon-link"></span>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
+        <h2><%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + p.title, p.link_url %></h2>
       <% end %>
 		<% else %>
       <% case p.status %>
