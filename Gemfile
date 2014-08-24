@@ -50,6 +50,8 @@ gem 'twitter'
 # Use codeclimate for code coverage
 gem "codeclimate-test-reporter", group: :test, require: nil
 
+gem "rack-google-analytics"
+
 # Use rspec-rails for testing
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
