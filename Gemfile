@@ -32,9 +32,6 @@ gem 'RedCloth'
 # Use bootstrap-sass
 gem 'bootstrap-sass'
 
-# Use StatHat to track statistics
-gem 'stathat'
-
 # Use friendly_id for user readable URLs and better SEO
 gem 'friendly_id', '~> 5.0.0'
 
