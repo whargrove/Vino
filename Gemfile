@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', :git => 'https://github.com/rails/rails.git', :tag => 'v4.2.0.beta1'
+gem 'rails', :git => 'https://github.com/rails/rails.git', :tag => 'v4.2.0.beta4'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg'
@@ -12,7 +12,7 @@ gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -49,7 +49,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use rspec-rails for testing
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'fuubar', '~> 2.0.0'
