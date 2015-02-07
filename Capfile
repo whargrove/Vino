@@ -13,5 +13,8 @@ require 'capistrano/rbenv'
 # Include rails tasks
 require 'capistrano/rails'
 
+# Include javam/whenever tasks
+require 'whenever/capistrano'
+
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
