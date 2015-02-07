@@ -5,9 +5,12 @@ rvm:
 bundler_args: --without production
 addons:
   postgresql: "9.3"
+  code_climate:
+    repo_token: 20668d41e0d2180a420f768ecaec7d671394b42ebf12c34dbe66a366aa426ba9
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
   - cp config/secrets.yml.travis config/secrets.yml
   - bundle exec rake db:migrate RAILS_ENV=test
-env: CODECLIMATE_REPO_TOKEN=20668d41e0d2180a420f768ecaec7d671394b42ebf12c34dbe66a366aa426ba9
+notifications:
+  email: false
