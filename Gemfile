@@ -45,9 +45,9 @@ gem 'twitter', '~> 5.13.0'
 # Use rspec-rails for testing
 group :development, :test do
   gem 'sqlite3', '~> 1.3.10'
-  gem 'rspec-rails', '~> 3.1.0'
-  gem 'rspec-collection_matchers'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails', '~> 3.2.0'
+  gem 'rspec-collection_matchers', '~> 1.1.2'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'fuubar', '~> 2.0.0'
   gem 'spring', '~> 1.3.0'
   gem 'codeclimate-test-reporter', '~> 0.4.6', require: nil
