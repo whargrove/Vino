@@ -49,6 +49,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 # Use rspec-rails for testing
 group :development, :test do
+  gem 'sqlite3', '~> 1.3.10'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails', '~> 4.0'
