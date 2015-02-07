@@ -55,9 +55,8 @@ end
 
 # Development gems
 group :development do
-  # TODO Add pessimistic operators for capistrano* gems
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
+  gem 'capistrano', '~> 3.3.5'
+  gem 'capistrano-rails', '~> 1.1.2'
+  gem 'capistrano-rbenv', '~> 2.0.3'
+  gem 'capistrano-bundler', '~> 1.1.4'
 end

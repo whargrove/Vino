@@ -240,10 +240,10 @@ DEPENDENCIES
   RedCloth (~> 4.2.9)
   bcrypt-ruby (~> 3.1.5)
   bootstrap-sass (~> 3.3.3)
-  capistrano
-  capistrano-bundler
-  capistrano-rails
-  capistrano-rbenv
+  capistrano (~> 3.3.5)
+  capistrano-bundler (~> 1.1.4)
+  capistrano-rails (~> 1.1.2)
+  capistrano-rbenv (~> 2.0.3)
   codeclimate-test-reporter (~> 0.4.6)
   coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.5.0)
