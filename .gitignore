@@ -27,3 +27,6 @@
 # Ignore bins
 /bundle/bin
 /bin
+
+# Ignore capistrano metrics
+/.capistrano
