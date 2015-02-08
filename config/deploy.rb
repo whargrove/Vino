@@ -22,18 +22,9 @@ namespace :deploy do
 
   before :deploy, 'check_revision'
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after 'deploy:publishing', 'deploy:restart'
-
   desc 'Force restart of passenger after restart'
   task :ping do
-  	system "curl --silent #{fetch(:ping_url)}"
+    system "curl --silent #{fetch(:ping_url)}"
   end
 
   desc 'Create releast.txt file in public directory'
