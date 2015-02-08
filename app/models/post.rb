@@ -22,11 +22,6 @@ class Post < ActiveRecord::Base
   end
 
   def tweet
-    # Only post to twitter if this is a production environment
-    unless Rails.env.production?
-      return
-    end
-
     # First, setup the twitter client
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = Rails.application.secrets.twitter_api_key
