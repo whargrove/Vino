@@ -21,9 +21,5 @@
 # Ignore public/assets
 /public/assets/
 
-# Ignore bins
-/bundle/bin
-/bin
-
 # Ignore capistrano metrics
 /.capistrano
