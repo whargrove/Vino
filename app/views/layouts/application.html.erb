@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%= render 'shared/head_tag' %>
-</head>
-<body>
-<% if current_user %>
-  <%= render 'shared/admin_navigation' %>
-<% end %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= render 'shared/header' %>
-      <%= yield %>
+  <head>
+    <%= render 'shared/head_tag' %>
+  </head>
+  <body>
+  <% if current_user %>
+    <%= render 'shared/admin_navigation' %>
+  <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <%= render 'shared/header' %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<%= render 'shared/footer' %>
-</body>
+  <%= render 'shared/footer' %>
+  </body>
 </html>
