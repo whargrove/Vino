@@ -1,9 +1,6 @@
 # Ignore bundler config
 /.bundle
 
-# Ignore rbenv file
-/.ruby-version
-
 # Ignore bundler install path
 /vendor/bundle
 
