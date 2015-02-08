@@ -14,6 +14,9 @@ set :rbenv_ruby, '2.2.0'
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :keep_releases, 5
 
+# bundler
+set :bundle_jobs, 4
+
 namespace :deploy do
 
   before :deploy, 'check_revision'
