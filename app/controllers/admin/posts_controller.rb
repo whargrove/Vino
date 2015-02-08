@@ -5,7 +5,7 @@ class Admin::PostsController < ApplicationController
 
   # GET admin/posts
   def index
-    @posts = Post.order('published_at DESC')
+    @posts = Post.paginate(:page => params[:page], :per_page => 10).order('published_at DESC')
     Time.zone = 'Pacific Time (US & Canada)'
   end
 
