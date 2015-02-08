@@ -1,68 +1,73 @@
 <div class="row">
-	<div class="col-xs-9">
-		<h2>Posts</h2>
-	</div>
-	<div class="col-xs-3">
-		<h2 class="pull-right">
-		<%= link_to new_admin_post_path, :class => 'btn btn-default btn' do %>
-			<i class="fa fa-plus"></i></a>
-		<% end %>
-		</h2>
-	</div>
+  <div class="col-xs-9">
+    <h2>Posts</h2>
+  </div>
+  <div class="col-xs-3">
+    <h2 class="pull-right">
+    <%= link_to new_admin_post_path, :class => 'btn btn-default btn' do %>
+      <i class="fa fa-plus"></i></a>
+    <% end %>
+    </h2>
+  </div>
 </div>
 
 <div class="table-responsive">
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Author</th>
-				<th>Published date</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-		<tbody>
-			<% @posts.each do |post| %>
-				<tr>
-					<td>
-						<% case post.status %>
-						<% when 'draft' %>
-							<% if post.link? %>
-								<%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Draft</span>
-							<% else %>
-								<%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Draft</span>
-							<% end %>
-						<% when 'scheduled' %>
-							<% if post.link? %>
-								<%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Scheduled</span>
-							<% else %>
-								<%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Scheduled</span>
-							<% end %>
-						<% when 'published' %>
-							<% if post.link? %>
-								<%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + truncate(post.title, length: 45, separator: ' '), post %>
-							<% else %>
-								<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
-							<% end %>
-						<% else %>
-							<%= link_to truncate(post.title, length: 45, separator: ' '), post %>
-						<% end %>
-					</td>
-					<td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
-					<td><% if !post.draft? %>
-								<%= post.published_at.in_time_zone.strftime('%I:%M %p %m/%d/%Y') %>
-							<% end %></td>
-					<td>
-						<%= link_to edit_admin_post_path(post), :class => 'btn btn-default btn-xs' do %>
-							<i class="fa fa-edit fa-lg"></i> Edit
-						<% end %>
-						<%= link_to admin_post_url(post), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-xs' do %>
-							<i class="fa fa-trash-o fa-lg"></i> Delete
-						<% end %>
-					</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <% case post.status %>
+            <% when 'draft' %>
+              <% if post.link? %>
+                <%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Draft</span>
+              <% else %>
+                <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Draft</span>
+              <% end %>
+            <% when 'scheduled' %>
+              <% if post.link? %>
+                <%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Scheduled</span>
+              <% else %>
+                <%= link_to truncate(post.title, length: 45, separator: ' '), post %>&nbsp;<span class="label label-default label-admin">Scheduled</span>
+              <% end %>
+            <% when 'published' %>
+              <% if post.link? %>
+                <%= link_to '<i class="fa fa-long-arrow-right"></i>'.html_safe + '&nbsp;'.html_safe + truncate(post.title, length: 45, separator: ' '), post %>
+              <% else %>
+                <%= link_to truncate(post.title, length: 45, separator: ' '), post %>
+              <% end %>
+            <% else %>
+              <%= link_to truncate(post.title, length: 45, separator: ' '), post %>
+            <% end %>
+          </td>
+          <td><%= post.user_id ? User.find(post.user_id).first_name : nil %></td>
+          <td><% if !post.draft? %>
+                <%= post.published_at.in_time_zone.strftime('%I:%M %p %m/%d/%Y') %>
+              <% end %></td>
+          <td>
+            <%= link_to edit_admin_post_path(post), :class => 'btn btn-default btn-xs' do %>
+              <i class="fa fa-edit fa-lg"></i> Edit
+            <% end %>
+            <%= link_to admin_post_url(post), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-xs' do %>
+              <i class="fa fa-trash-o fa-lg"></i> Delete
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+
+<%= will_paginate @posts,
+  renderer: BootstrapPagination::Rails,
+  page_links: false, class: "center-block",
+  previous_label: "Previous", next_label: "Next" %>
