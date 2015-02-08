@@ -1,13 +1,14 @@
 require 'rake'
 namespace :posts do
-  desc "Publish a scheduled draft"
+  desc "Publish scheduled drafts"
   task :publish_drafts => :environment do
-    posts = Post.where("status = ?", Post.statuses[:scheduled])
-    posts.each do |p|
+    puts "[#{Time.now.iso8601}] Getting all scheduled posts"
+    Post.scheduled.all.each do |post|
       if p.published_at && p.published_at <= Time.now.utc
+        puts "[#{Time.now.iso8601}] Found eligible post: #{post.id}"
         p.published!
+        puts "[#{Time.now.iso8601}] Published #{post.id}"
         p.tweet
-        puts "#{p.title} was published at #{p.published_at}."
       end
     end
   end
