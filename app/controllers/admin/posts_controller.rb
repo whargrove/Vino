@@ -41,7 +41,7 @@ class Admin::PostsController < ApplicationController
     set_status(post_params, @post)
 
     if @post.save
-      @post.tweet if Rails.env.production && @post.published?
+      @post.tweet if Rails.env.production? && @post.published?
       redirect_to admin_posts_url, notice: "Post was created."
     else
       render action: 'new', error: "Something happened."
@@ -54,7 +54,7 @@ class Admin::PostsController < ApplicationController
       if @post.published?
         @post.published_at = Time.now.utc if @post.published_at.nil?
         if @post.save!
-          @post.tweet if Rails.env.production && @post.published_at > 5.seconds.ago
+          @post.tweet if Rails.env.production? && @post.published_at > 5.seconds.ago
         end
       end
       redirect_to admin_posts_url, notice: "Post was updated."
