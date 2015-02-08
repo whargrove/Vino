@@ -16,6 +16,7 @@ set :keep_releases, 5
 
 # bundler
 set :bundle_jobs, 4
+set :bundle_flags, '--deployment'
 
 namespace :deploy do
 
