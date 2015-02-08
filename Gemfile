@@ -28,7 +28,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 
 # Use friendly_id for user readable URLs and better SEO
 # TODO Upgrade to v5.1.0
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '~> 5.1.0'
 
 # Use will_paginate-bootstrap to paginate on Posts#index
 gem 'will_paginate-bootstrap', '~> 1.0.1'
