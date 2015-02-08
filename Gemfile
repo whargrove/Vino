@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails', '~> 4.0.3'
 
 # Use V8 JavaScript interpreter
-gem 'therubyracer', '~> 0.12.1'
+gem 'therubyracer'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.5'
