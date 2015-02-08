@@ -22,27 +22,8 @@ class Post < ActiveRecord::Base
   end
 
   def tweet
-    # Only post to twitter if this is a production environment
-    unless Rails.env.production?
-      return
-    end
-
-    # First, setup the twitter client
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = Rails.application.secrets.twitter_api_key
-      config.consumer_secret     = Rails.application.secrets.twitter_api_secret
-      config.access_token        = Rails.application.secrets.twitter_access_token
-      config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
-    end
-
-    # Get a URL of the post
-    url = "http://www.weshargrove.com/posts/" + self.slug
-
-    # Create the status
-    status = "New post: \"#{self.title}\" #{url}"
-
-    # Update the status
-    client.update(status)
+    status = "New post: \"#{self.title}\" #{post_url(self)}"
+    twitter_client.update(status)
   end
 
   private
@@ -55,5 +36,14 @@ class Post < ActiveRecord::Base
   rescue URI::InvalidURIError
     errors.add(:link_url, "must be a valid format")
     false
+  end
+
+  def twitter_client
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = Rails.application.secrets.twitter_api_key
+      config.consumer_secret     = Rails.application.secrets.twitter_api_secret
+      config.access_token        = Rails.application.secrets.twitter_access_token
+      config.access_token_secret = Rails.application.secrets.twitter_access_token_secret
+    end
   end
 end
