@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   include Comparable
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -22,7 +23,7 @@ class Post < ActiveRecord::Base
   end
 
   def tweet
-    status = "New post: \"#{self.title}\" #{post_url(self)}"
+    status = "New post: \"#{self.title}\" weshargrove.com#{post_url(self)}"
     twitter_client.update(status)
   end
 
