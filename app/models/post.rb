@@ -1,10 +1,9 @@
 class Post < ActiveRecord::Base
-  include Rails.application.routes.url_helpers
   include Comparable
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-	belongs_to :user
+  belongs_to :user
 
   validates_presence_of :title
   validates_uniqueness_of :title
@@ -23,7 +22,7 @@ class Post < ActiveRecord::Base
   end
 
   def tweet
-    status = "New post: \"#{self.title}\" weshargrove.com#{post_url(self)}"
+    status = "New post: \"#{self.title}\" weshargrove.com/posts/#{self.friendly_id}}"
     twitter_client.update(status)
   end
 
