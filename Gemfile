@@ -27,7 +27,6 @@ gem 'RedCloth', '~> 4.2.9'
 gem 'bootstrap-sass', '~> 3.3.3'
 
 # Use friendly_id for user readable URLs and better SEO
-# TODO Upgrade to v5.1.0
 gem 'friendly_id', '~> 5.1.0'
 
 # Use will_paginate-bootstrap to paginate on Posts#index
