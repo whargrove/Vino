@@ -16,8 +16,5 @@ require 'capistrano/rails'
 # Include javam/whenever tasks
 require 'whenever/capistrano'
 
-# Include passenger tasks
-require 'capistrano/passenger'
-
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
