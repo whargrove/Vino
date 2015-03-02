@@ -37,6 +37,7 @@ set :pty, true
 
 namespace :deploy do
 
+  # Branch must be in sync with remote before deploying
   before :deploy, :check_revision
 
   # Task to trigger Unicorn restart
@@ -50,10 +51,10 @@ namespace :deploy do
   end
 
   # Restart Unicorn on deploy and rollback
-  after :deploy, 'deploy:restart'
-  after :rollback, 'deploy:restart'
+  after :deploy, :restart
+  after :rollback, :restart
 
-  after :finishing, 'deploy:cleanup'
+  after :finishing, :cleanup
   after :finished, :create_release_file
 
 end
