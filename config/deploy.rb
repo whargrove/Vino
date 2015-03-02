@@ -36,6 +36,6 @@ namespace :deploy do
   after :rollback, 'deploy:restart'
 
   after :finishing, 'deploy:cleanup'
-  after :finished, :create_release_file
+  # after :finished, :create_release_file
 
 end
