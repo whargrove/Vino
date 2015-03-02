@@ -1,4 +1,5 @@
 namespace :setup do
+
   desc 'Upload /config/*.yml files'
   task :upload_ymls do
     on roles(:app) do
