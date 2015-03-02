@@ -7,10 +7,10 @@ set -e
 # Feel free to change any of the following variables for your app:
 RAILS_ENV=$2 # Get the RAILS_ENV as an argument to this script so the env flag can be set for Unicorn
 TIMEOUT=${TIMEOUT-60}
-APP_ROOT=/var/www/exporter/current
+APP_ROOT=/var/www/blog/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="cd $APP_ROOT; ~/.rbenv/bin/rbenv exec bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E ${RAILS_ENV}"
-AS_USER=exporter
+AS_USER=blog
 set -u
 
 OLD_PIN="$PID.oldbin"
