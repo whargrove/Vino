@@ -21,7 +21,7 @@ set :scm, :git
 set :format, :pretty
 
 # Set to :debug if you want a more verbose output
-set :log_level, :info
+set :log_level, :debug
 
 # Rbenv
 set :rbenv_type, :user
@@ -30,7 +30,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 # Bundler
 set :bundle_jobs, 4
-set :bundle_flags, '--deployment'
+set :bundle_flags, '--deployment --verbose'
 
 # Other
 set :pty, true
