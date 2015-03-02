@@ -40,9 +40,6 @@ namespace :deploy do
   # Branch must be in sync with remote before deploying
   before :deploy, :check_revision
 
-  # Create bundle config
-  before 'bundler:install', 'prepare_bundle_config'
-
   # Task to trigger Unicorn restart
   %w[start stop restart].each do |command|
     desc "#{command} Unicorn server"
