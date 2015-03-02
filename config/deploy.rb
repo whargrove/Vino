@@ -31,6 +31,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # Bundler
 set :bundle_jobs, 4
 set :bundle_flags, '--deployment --verbose'
+set :bundle_path, -> { shared_path.join('vendor/bundle') }
 
 # Other
 set :pty, true
