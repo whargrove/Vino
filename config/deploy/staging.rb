@@ -1,6 +1,6 @@
 set :stage, :staging
 
-server '45.56.66.154', user: 'blog', roles: %w{web app db}
+server 'blog-stage.weshargrove.com', user: 'blog', roles: %w{web app db}
 
 # SSH Options
 set :ssh_options, {
