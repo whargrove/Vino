@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   layout 'login'
-  force_ssl except: :destroy, if: :ssl_configured?
+  force_ssl if: :ssl_configured?
 
   def new
     if current_user.nil?
