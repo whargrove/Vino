@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.1'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg', '~> 0.18.1'
