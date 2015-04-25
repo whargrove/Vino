@@ -25,7 +25,7 @@ set :log_level, :info
 
 # Rbenv
 set :rbenv_type, :user
-set :rbenv_ruby, '2.2.0'
+set :rbenv_ruby, '2.2.2'
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 # Bundler
