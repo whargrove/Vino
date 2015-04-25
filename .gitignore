@@ -23,3 +23,6 @@
 
 # Ignore capistrano metrics
 /.capistrano
+
+# Ignore graphviz
+gem_graph.png
