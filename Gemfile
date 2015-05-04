@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.2.0'
 
+# Riding Rails!
 gem 'rails', '~> 4.2.0'
 
 # Use postgreSQL as the database for Active Record
@@ -40,6 +42,9 @@ gem 'whenever', '~> 0.9.4'
 
 # Social media gems to extend posts
 gem 'twitter', '~> 5.13.0'
+
+# Make Rails behave on Heroku
+gem 'rails_12factor', group: :production
 
 # Use rspec-rails for testing
 group :development, :test do
