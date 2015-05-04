@@ -49,7 +49,7 @@ end
 
 # Adding this to skip SSL redirects while testing
 module ActionController::ForceSSL::ClassMethods
-  def force_ssl(options = {})
+  def force_ssl(_options = {})
     # skip
   end
 end
