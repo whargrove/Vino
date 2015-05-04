@@ -6,16 +6,20 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
 
   def authorize
-  	redirect_to login_url, alert: "Not authorized" if current_user.nil?
+    if current_user.nil?
+      redirect_to login_url, alert: 'Not authorized'
+    end
   end
   
   def authorize_registration
     if Rails.env.production?
+      puts "Request IP: #{request.remote_ip}"
+      puts "Secret IP: #{Rails.application.secrets.ip_address}"
       if request.remote_ip == Rails.application.secrets.ip_address
         return true 
       else
