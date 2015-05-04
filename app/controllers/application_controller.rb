@@ -18,8 +18,6 @@ class ApplicationController < ActionController::Base
   
   def authorize_registration
     if Rails.env.production?
-      puts "Request IP: #{request.remote_ip}"
-      puts "Secret IP: #{Rails.application.secrets.ip_address}"
       if request.remote_ip == Rails.application.secrets.ip_address
         return true 
       else
