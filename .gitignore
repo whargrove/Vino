@@ -15,12 +15,11 @@
 # Ignore database.yml for security
 /config/database.yml
 
-# Ignore secrets.yml for protecting secrets
-/config/secrets.yml
-
 # Ignore public/assets
 /public/assets/
 
-# Ignore capistrano metrics
-/.capistrano
+# Sublime text
 *.sublime-workspace
+
+# Ignore graphviz
+gem_graph.png

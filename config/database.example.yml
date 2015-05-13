@@ -1,22 +1,18 @@
-# Uncomment the following lines to use PostgreSQL for a development environment
+# Use sqlite for dev environment
 # development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: blog_development
+#   adapter: sqlite3
+#   database: db/development.sqlite3
 #   pool: 5
-#   username: 
-#   password: 
+#   timeout: 5000
 
-# Uncomment the following lines to use PostgreSQL for a test environment
+# Use sqlite for test environment
 # test:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: blog_test
+#   adapter: sqlite3
+#   database: db/test.sqlite3
 #   pool: 5
-#   username: 
-#   password: 
+#   timeout: 5000
 
-# Uncomment the following lines to use PostgreSQL for a production environment
+# Bring out the big guns for production
 # production:
 #   adapter: postgresql
 #   encoding: unicode

@@ -32,6 +32,8 @@ class SessionsController < ApplicationController
 private
 
   def ssl_configured?
-    !Rails.env.development?
+    # SSL is only configured for production environment
+    Rails.env.production?
   end
+
 end

@@ -13,14 +13,11 @@ class PostsController < ApplicationController
     Time.zone = 'Pacific Time (US & Canada)'
   end
 
-  # GET /posts/:id
+  # GET /posts/:slug
   def show
-    if current_user
-      # Go ahead
-      render 'show'
-    elsif !current_user && @post.draft?
+    if @post.draft? && !current_user
       # Redirect to /
-      # beacuse visitors should not view drafts
+      # because visitors should not view drafts
       redirect_to root_url
     end
   end
