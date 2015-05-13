@@ -55,11 +55,3 @@ group :development, :test do
   gem 'spring', '~> 1.3.0'
   gem 'codeclimate-test-reporter', '~> 0.4.6', require: nil
 end
-
-# Development gems
-group :development do
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-rails', '~> 1.1.2'
-  gem 'capistrano-rbenv', '~> 2.0.3'
-  gem 'capistrano-bundler', '~> 1.1.4'
-end
