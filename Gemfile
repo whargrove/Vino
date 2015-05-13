@@ -42,6 +42,9 @@ gem 'whenever', '~> 0.9.4'
 # Social media gems to extend posts
 gem 'twitter', '~> 5.14.0'
 
+# Make Rails behave on Heroku
+gem 'rails_12factor', group: :production
+
 # Use rspec-rails for testing
 group :development, :test do
   gem 'sqlite3', '~> 1.3.10'
