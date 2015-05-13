@@ -42,31 +42,9 @@ Select default text
 
 Command + V to paste new `secret_key_base`
 
-#### Setup PostgreSQL
+#### Setup Database
 
-Use Homebrew to install PostgreSQL
-
-`brew install postgresql`
-
-Initialize PostgreSQL
-
-`initdb /usr/local/var/postgres`
-
-Create the database. (Replace `{user_name}` with your system user name.)
-
-`createdb -U {user_name} blog_development`
-
-Verify you can connect to the DB
-
-`psql -d blog_development`
-
-Finally, create a usable database.yml. (You could `mv` if you don't want to keep the example around. config/database.yml is ignored for deployment purposes.)
-
-`cp config/database.example.yml config/database.yml`
-
-Uncomment the development section
-
-Add your user name. (Should be the same user that initialized and created the DB.)
+Uncomment the development and test sections
 
 #### Use Pow to serve the rack app
 
@@ -99,8 +77,6 @@ Migrate the database
 #### Create a user
 
 Go to http://vino.dev/signup in your browser.
-
-(Note: In a production environment, your IP address is checked when going to /signup. I recommend adding your IP address as to `application.yml` so the app knows who is allowed to create a user.)
 
 Enter your user name, first name, last name, and password to sign up.
 

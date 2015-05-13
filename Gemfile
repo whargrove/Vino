@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.2'
 
-# Riding Rails!
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.1'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg', '~> 0.18.1'
 
 # Application server
-gem 'unicorn', '~> 4.8.0'
+gem 'unicorn', '~> 4.9.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.1'
@@ -41,7 +40,7 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'whenever', '~> 0.9.4'
 
 # Social media gems to extend posts
-gem 'twitter', '~> 5.13.0'
+gem 'twitter', '~> 5.14.0'
 
 # Make Rails behave on Heroku
 gem 'rails_12factor', group: :production
@@ -55,12 +54,4 @@ group :development, :test do
   gem 'fuubar', '~> 2.0.0'
   gem 'spring', '~> 1.3.0'
   gem 'codeclimate-test-reporter', '~> 0.4.6', require: nil
-end
-
-# Development gems
-group :development do
-  gem 'capistrano', '~> 3.3.5'
-  gem 'capistrano-rails', '~> 1.1.2'
-  gem 'capistrano-rbenv', '~> 2.0.3'
-  gem 'capistrano-bundler', '~> 1.1.4'
 end
