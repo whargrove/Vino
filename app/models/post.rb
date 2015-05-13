@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   end
 
   def tweet
-    status = "New post: \"#{self.title}\" weshargrove.com/posts/#{self.friendly_id}}"
+    status = "New post: \"#{self.title}\" weshargrove.com/posts/#{self.friendly_id}"
     twitter_client.update(status)
   end
 
